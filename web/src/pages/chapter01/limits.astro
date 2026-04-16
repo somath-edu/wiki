@@ -41,29 +41,37 @@ const limA = "$\\displaystyle \\lim_{x \\to a}$";
 					"함수의 극한 문제를 해결할 때는 크게 <b>두 가지 흐름</b>을 파악하는 것이 핵심입니다."
 				</p>
 
-				<h4 style="margin: 0 0 var(--base-grid) 0; display: flex; align-items: baseline;">
-					1. {limInf} (무한대로 갈 때)
-					<a href="/wiki/chapter01/problems-inf/" class="problem-link">실전 문제 ✏️</a>
-				</h4>
-				<p>분수 형태의 식에서는 분모와 분자의 <b>최고차항</b>을 비교합니다.</p>
-				<ul>
-					<li><b>분모의 차수 &gt; 분자의 차수</b>: 극한값은 $0$입니다.</li>
-					<li><b>분모의 차수 = 분자의 차수</b>: 극한값은 <b>최고차항 계수의 비</b>입니다.</li>
-					<li><b>분모의 차수 &lt; 분자의 차수</b>: 무한대($\infty$)로 발산합니다.</li>
-				</ul>
+				<!-- Flow 01 -->
+				<div class="type-section">
+					<span class="type-badge">학습 흐름 01</span>
+					<h4 style="margin-top: 5px; display: flex; align-items: baseline; gap: 15px;">
+						{limInf} (무한대로 갈 때)
+						<a href="/wiki/chapter01/problems-inf/" class="problem-link">실전 문제 ✏️</a>
+					</h4>
+					<p>분수 형태의 식에서는 분모와 분자의 <b>최고차항</b>을 비교합니다.</p>
+					<ul>
+						<li><b>분모의 차수 &gt; 분자의 차수</b>: 극한값은 $0$입니다.</li>
+						<li><b>분모의 차수 = 분자의 차수</b>: 극한값은 <b>최고차항 계수의 비</b>입니다.</li>
+						<li><b>분모의 차수 &lt; 분자의 차수</b>: 무한대($\infty$)로 발산합니다.</li>
+					</ul>
+				</div>
 
-				<h4 style="margin-top: var(--base-grid); display: flex; align-items: baseline;">
-					2. {limA} (상수로 갈 때)
-					<a href="#" class="problem-link">실전 문제 ✏️</a>
-				</h4>
-				<p>대입했을 때 분모가 $0$이 되는 경우(부정형)를 주의해야 합니다.</p>
-				<ul>
-					<li>분모가 $0$으로 가면, 분자도 반드시 $0$으로 가야 극한값이 존재합니다. ($0/0$ 꼴)</li>
-					<li>이때 분자는 반드시 분모를 $0$으로 만드는 <b>인수 $(x-a)$</b>를 가지고 있습니다.</li>
-				</ul>
-				<p style="font-style: italic; color: #666; font-size: 11pt;">
-					"분모가 0이 된다면, 분자에서 약분할 대상을 찾으세요!"
-				</p>
+				<!-- Flow 02 -->
+				<div class="type-section">
+					<span class="type-badge">학습 흐름 02</span>
+					<h4 style="margin-top: 5px; display: flex; align-items: baseline; gap: 15px;">
+						{limA} (상수로 갈 때)
+						<a href="#" class="problem-link">실전 문제 ✏️</a>
+					</h4>
+					<p>대입했을 때 분모가 $0$이 되는 경우(부정형)를 주의해야 합니다.</p>
+					<ul>
+						<li>분모가 $0$으로 가면, 분자도 반드시 $0$으로 가야 극한값이 존재합니다. ($0/0$ 꼴)</li>
+						<li>이때 분자는 반드시 분모를 $0$으로 만드는 <b>인수 $(x-a)$</b>를 가지고 있습니다.</li>
+					</ul>
+					<p style="font-style: italic; color: #666; font-size: 11pt; margin-bottom: 0;">
+						"분모가 0이 된다면, 분자에서 약분할 대상을 찾으세요!"
+					</p>
+				</div>
 			</section>
 
 			<div slot="summary">
