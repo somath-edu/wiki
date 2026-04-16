@@ -10,8 +10,15 @@ import '../styles/cornell.css';
 
 <div class="paper">
 	<header class="cornell-header">
-		{chapter && <p style="font-family: var(--header-font); font-size: 10pt; margin: 0; color: #888;">{chapter}</p>}
-		<h1>{title}</h1>
+			<div style="display: flex; justify-content: space-between; align-items: flex-start;">
+				<div>
+					{chapter && <p style="font-family: var(--header-font); font-size: 10pt; margin: 0; color: #888;">{chapter}</p>}
+					<h1>{title}</h1>
+				</div>
+				{!title.includes("Syllabus") && 
+					<a href="/wiki/" class="problem-link" style="margin-left: 0; background-color: rgba(0,0,0,0.05); color: #555; border-color: #ddd;">📋 전체 목차</a>
+				}
+			</div>
 	</header>
 
 	<main class="cornell-main">
