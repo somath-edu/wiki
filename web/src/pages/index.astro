@@ -9,6 +9,7 @@ import CornellNote from '../components/CornellNote.astro';
 		<meta name="viewport" content="width=device-width" />
 		<title>미적분 Ⅰ - 디지털 교과서 목차</title>
 		<style>
+			/* Syncing styles with the main airy theme */
 			body {
 				background-color: #e0e0e0;
 				margin: 0;
@@ -21,25 +22,27 @@ import CornellNote from '../components/CornellNote.astro';
 				padding: 0;
 			}
 			.chapter-item {
-				margin-bottom: 25px;
+				margin-bottom: var(--base-grid);
 			}
 			.chapter-title {
-				font-family: 'Nanum Myeongjo', serif;
+				font-family: var(--header-font);
 				font-weight: 800;
 				font-size: 1.4rem;
 				border-bottom: 2px solid #444;
 				padding-bottom: 5px;
 				margin-bottom: 10px;
 				color: #1a1a1a;
+				line-height: var(--line-height);
 			}
 			.lesson-list {
 				list-style: none;
-				padding-left: 10px;
+				padding-left: 20px;
 			}
 			.lesson-item {
-				margin: 8px 0;
-				font-family: 'EB Garamond', serif;
+				margin: 0;
+				font-family: var(--body-font);
 				font-size: 1.2rem;
+				line-height: var(--line-height);
 			}
 			.lesson-item a {
 				text-decoration: none;
@@ -50,10 +53,6 @@ import CornellNote from '../components/CornellNote.astro';
 				color: #d32f2f;
 				text-decoration: underline;
 			}
-			.lesson-item.empty {
-				color: #999;
-				font-style: italic;
-			}
 		</style>
 	</head>
 	<body>
@@ -61,14 +60,9 @@ import CornellNote from '../components/CornellNote.astro';
 			
 			<div slot="cues">
 				<p><b>Learning Map</b></p>
-				<p style="font-size: 10pt; line-height: 1.4;">이 책은 개념의 원리를 이해하고 스스로 정리하는 능력을 키우기 위해 설계되었습니다.</p>
-				
-				<div style="margin-top: 50mm;">
-					<p><b>Quick Links:</b></p>
-					<ul style="font-size: 11pt; font-family: 'EB Garamond';">
-						<li><a href="/wiki/chapter01/limits/">01. 함수의 극한</a></li>
-					</ul>
-				</div>
+				<p style="margin-top: var(--base-grid); color: #2c2c2c; font-style: normal; font-family: var(--body-font);">
+					"이 책은 개념의 원리를 이해하고 스스로 정리하는 능력을 키우기 위해 설계되었습니다."
+				</p>
 			</div>
 
 			<section>
@@ -103,7 +97,7 @@ import CornellNote from '../components/CornellNote.astro';
 					</div>
 				</div>
 
-				<div style="margin-top: 20mm; padding: 15px; background: rgba(0,0,0,0.03); border-radius: 5px; font-style: italic;">
+				<div style="margin-top: calc(var(--base-grid) * 2); padding: var(--base-grid); background: rgba(0,0,0,0.03); border-radius: 5px; font-style: italic; line-height: var(--line-height);">
 					<p>"수학은 암기하는 것이 아니라, 정의로부터 논리적으로 쌓아 올리는 지능형 체계입니다."</p>
 				</div>
 			</section>
