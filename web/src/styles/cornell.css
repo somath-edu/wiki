@@ -48,10 +48,15 @@ body {
 .cornell-header {
   border-bottom: 2px solid #444;
   margin-bottom: var(--base-grid);
-  min-height: calc(var(--base-grid) * 2);
+  min-height: calc(var(--base-grid) * 3);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end; /* Align to baseline */
+  padding-bottom: 10px;
+}
+
+.cornell-header p {
+  margin: 0 0 8px 0 !important; /* Space between chapter and title */
 }
 
 .cornell-header h1 {
