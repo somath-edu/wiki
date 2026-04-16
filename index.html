@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive_S | Intelligence Portal</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Lexend:wght@400;700&display=swap">
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: rgba(22, 27, 34, 0.7);
+            --accent-color: #58a6ff;
+            --text-main: #c9d1d9;
+            --text-dim: #8b949e;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(88, 166, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(121, 40, 202, 0.05) 0%, transparent 50%);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2.5vw;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Lexend', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 4vw;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent-color);
+        }
+
+        #markdown-content {
+            font-size: 1.05rem;
+        }
+
+        /* Markdown Styling */
+        #markdown-content h1, #markdown-content h2, #markdown-content h3 {
+            font-family: 'Lexend', sans-serif;
+            color: #fff;
+            margin-top: 1.8em;
+            margin-bottom: 1em;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.3em;
+        }
+        #markdown-content a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        #markdown-content a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+        #markdown-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95rem;
+            overflow-x: auto;
+            display: block;
+        }
+        #markdown-content th, #markdown-content td {
+            padding: 14px;
+            border: 1px solid var(--glass-border);
+            text-align: left;
+        }
+        #markdown-content th {
+            background: rgba(88, 166, 255, 0.1);
+            color: #fff;
+        }
+        #markdown-content blockquote {
+            border-left: 4px solid var(--accent-color);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 0 12px 12px 0;
+            padding: 20px;
+            margin: 25px 0;
+            font-style: italic;
+        }
+
+        .back-btn {
+            display: none;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* Obsidian Callout Simulation */
+        .callout {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            border-left: 5px solid;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .callout-info { background: rgba(0, 122, 255, 0.08); border-left-color: #007aff; }
+        .callout-tip { background: rgba(52, 199, 89, 0.08); border-left-color: #34c759; }
+        .callout-warning { background: rgba(255, 149, 0, 0.08); border-left-color: #ff9500; }
+        .callout-title { font-weight: 700; margin-bottom: 8px; color: #fff; font-size: 0.95rem; }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .card { padding: 6vw; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="app">
+        <header>
+            <h1>Archive_S</h1>
+            <div class="subtitle">Intelligence Portal</div>
+            <a href="graph.html" style="display:inline-block; margin-top:16px; padding:10px 24px; background:rgba(88,166,255,0.15); border:1px solid rgba(88,166,255,0.4); border-radius:30px; color:#58a6ff; text-decoration:none; font-size:0.85rem; font-weight:600; letter-spacing:1px; transition:all 0.2s;" onmouseover="this.style.background='rgba(88,166,255,0.25)'" onmouseout="this.style.background='rgba(88,166,255,0.15)'">🗺️ 지식 지도 보기</a>
+        </header>
+
+        <div id="back-button" class="back-btn" onclick="loadIndex()">← Back to Index</div>
+
+        <div id="main-view" class="card">
+            <div id="markdown-content">
+                <p style="text-align: center; padding: 50px; color: var(--text-dim);">지식 시스템을 가동 중입니다...</p>
+            </div>
+        </div>
+
+        <footer>
+            &copy; 2026 ARCHIVE_S SYSTEM. POWERED BY ANTIGRAVITY AI &Somath-Edu.
+        </footer>
+    </div>
+
+    <script>
+        const contentDiv = document.getElementById('markdown-content');
+        const backBtn = document.getElementById('back-button');
+
+        // Configure Marked.js
+        marked.setOptions({
+            breaks: true,
+            gfm: true
+        });
+
+        async function fetchMarkdown(filename) {
+            try {
+                // Ensure proper encoding for Korean filenames and bypass browser cache
+                const response = await fetch(`wiki/${encodeURIComponent(filename)}?t=${Date.now()}`);
+                if (!response.ok) throw new Error('지식 조각을 찾을 수 없습니다.');
+                let text = await response.text();
+                
+                // Advanced Obsidian Callout conversion
+                const calloutRegex = /> \[!(.*?)\](.*?)\n([\s\S]*?)(?=\n\n|\n$|\Z)/gi;
+                text = text.replace(calloutRegex, (match, type, title, content) => {
+                    const cleanType = type.toLowerCase();
+                    const cleanTitle = title.trim() || type.toUpperCase();
+                    return `<div class="callout callout-${cleanType}"><div class="callout-title">${cleanTitle}</div>${content}</div>`;
+                });
+
+                // Obsidian Link conversion [[Link|Label]] or [[Link]]
+                text = text.replace(/\[\[(.*?)\|(.*?)\]\]/g, (m, link, label) => {
+                    return `<a href="#" onclick="loadPage('${link}')">${label}</a>`;
+                });
+                text = text.replace(/\[\[(.*?)\]\]/g, (m, link) => {
+                    return `<a href="#" onclick="loadPage('${link}')">${link}</a>`;
+                });
+
+                contentDiv.innerHTML = marked.parse(text);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch (err) {
+                contentDiv.innerHTML = `<p style="color: #ff4d4d; text-align: center; padding: 80px; font-weight: 600;">⚠️ ${err.message}</p>`;
+            }
+        }
+
+        function loadIndex() {
+            backBtn.style.display = 'none';
+            fetchMarkdown('index.md');
+        }
+
+        function loadPage(pageName) {
+            backBtn.style.display = 'block';
+            let filename = pageName.endsWith('.md') ? pageName : pageName + '.md';
+            fetchMarkdown(filename);
+        }
+
+        // Initialize App
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash && hash.endsWith('.md')) {
+                loadPage(hash);
+            } else {
+                loadIndex();
+            }
+        });
+    </script>
+</body>
+</html>
