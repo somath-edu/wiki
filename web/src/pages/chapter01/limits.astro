@@ -1,9 +1,9 @@
 ---
 import CornellNote from '../../components/CornellNote.astro';
 
-// Define LaTeX constants to bypass the Astro parser for curly braces
-const limInf = "$\\lim_{x \\to \\infty}$";
-const limA = "$\\lim_{x \\to a}$";
+// Define LaTeX constants with display style to put limits underneath
+const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
+const limA = "$\\displaystyle \\lim_{x \\to a}$";
 ---
 
 <html lang="ko">
