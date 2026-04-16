@@ -1,0 +1,102 @@
+---
+import CornellNote from '../../components/CornellNote.astro';
+
+// LaTeX constants for math accuracy
+const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>실전 연습 - 무한대 극한</title>
+		<!-- KaTeX (Safe CDN) -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body {
+				background-color: #e0e0e0;
+				margin: 0;
+				padding: 20px;
+				display: flex;
+				justify-content: center;
+			}
+			.solution {
+				color: #444;
+				background-color: rgba(0,0,0,0.02);
+				padding: 10px 15px;
+				border-left: 3px solid #ccc;
+				margin: 10px 0;
+			}
+		</style>
+	</head>
+	<body>
+		<CornellNote title="실전 연습: 무한대로 갈 때의 극한" chapter="Chapter 01 Practice">
+			
+			<div slot="cues">
+				<p><b>Checklist:</b></p>
+				<ul>
+					<li>분모/분자 최고차항 확인</li>
+					<li>무한대/무한대 꼴 판단</li>
+					<li>유리화가 필요한가?</li>
+				</ul>
+				
+				<p style="margin-top: calc(var(--base-grid) * 3);">
+					<b>Tip:</b><br/>
+					차수가 같으면 계수만 봅니다!
+				</p>
+			</div>
+
+			<section>
+				<h4>[문제 01] 기본 유리함수</h4>
+				<p>다음 극한값을 구하시오.</p>
+				<p style="text-align: center; font-size: 1.4rem; margin: var(--base-grid) 0;">
+					{limInf} { "$ \\frac{3x^2 - 5x + 1}{x^2 + 2} $" }
+				</p>
+				
+				<div class="solution">
+					<p><b>풀이:</b></p>
+					<p>1. 분모, 분자의 최고차항이 모두 $x^2$으로 **차수가 같습니다.**</p>
+					<p>2. 따라서 극한값은 최고차항의 계수의 비인 { "$ \\frac{3}{1} = 3 $" }입니다.</p>
+					<p><b>정답: 3</b></p>
+				</div>
+
+				<h4 style="margin-top: calc(var(--base-grid) * 2);">[문제 02] 무리식이 포함된 경우</h4>
+				<p>다음 극한값을 구하시오.</p>
+				<p style="text-align: center; font-size: 1.4rem; margin: var(--base-grid) 0;">
+					{limInf} { "$ (\\sqrt{x^2 + 2x} - x) $" }
+				</p>
+
+				<div class="solution">
+					<p><b>풀이:</b></p>
+					<p>1. $\infty - \infty$ 꼴이므로 **분자를 유리화**합니다.</p>
+					<p>
+						2. { "$ \\frac{(\\sqrt{x^2+2x}-x)(\\sqrt{x^2+2x}+x)}{\\sqrt{x^2+2x}+x} = \\frac{(x^2+2x)-x^2}{\\sqrt{x^2+2x}+x} = \\frac{2x}{\\sqrt{x^2+2x}+x} $" }
+					</p>
+					<p>3. 분모, 분자를 $x$로 나누면 { "$ \\frac{2}{\\sqrt{1+2/x}+1} \\to \\frac{2}{1+1} = 1 $" }</p>
+					<p><b>정답: 1</b></p>
+				</div>
+
+				<a href="/wiki/chapter01/limits/" class="back-link">← 개념 공부로 돌아가기</a>
+			</section>
+
+			<div slot="summary">
+				<p>무한대 극한의 핵심은 **'가장 힘이 센 항(최고차항)'**을 찾는 것입니다. 무리식이 있으면 유리화를 통해 우리가 아는 차수 비교 형태로 바꾸는 것이 전략입니다.</p>
+			</div>
+		</CornellNote>
+
+		<script is:inline>
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					delimiters: [
+						{left: '$$', right: '$$', display: true},
+						{left: '$', right: '$', display: false}
+					],
+					throwOnError : false
+				});
+			});
+		</script>
+	</body>
+</html>

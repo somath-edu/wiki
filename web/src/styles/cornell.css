@@ -156,3 +156,45 @@ body {
     padding-left: 0;
   }
 }
+
+/* Navigation Buttons */
+.problem-link {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 15px;
+  padding: 4px 12px;
+  background-color: rgba(65, 105, 225, 0.1);
+  color: royalblue;
+  border: 1px solid rgba(65, 105, 225, 0.2);
+  border-radius: 20px;
+  text-decoration: none;
+  font-family: var(--header-font);
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  vertical-align: middle;
+}
+
+.problem-link:hover {
+  background-color: royalblue;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: calc(var(--base-grid) * 2);
+  color: #666;
+  text-decoration: none;
+  font-family: var(--body-font);
+  font-style: italic;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: #1a1a1a;
+  text-decoration: underline;
+}
