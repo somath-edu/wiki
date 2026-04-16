@@ -129,13 +129,15 @@ body {
 @media screen and (max-width: 800px) {
   body {
     padding: 0;
+    overflow-x: hidden;
   }
   .paper {
     width: 100%;
     margin: 0;
-    padding: 15px;
+    padding: 30px 20px; /* Increased vertical and horizontal padding */
     box-shadow: none;
     background-size: 100% var(--base-grid);
+    min-height: auto; /* Remove A4 height constraint on mobile */
   }
   .cornell-main {
     flex-direction: column;
@@ -148,7 +150,7 @@ body {
     padding-right: 0;
     margin-right: 0;
     margin-bottom: var(--base-grid);
-    padding-bottom: 10px;
+    padding-bottom: 20px;
   }
   .cornell-notes {
     padding-left: 0;
