@@ -7,11 +7,7 @@ import CornellNote from '../components/CornellNote.astro';
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<title>미적분 I - 함수의 극한</title>
-		<!-- KaTeX for Math (Safe CDN) -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<title>미적분 Ⅰ - 디지털 교과서 목차</title>
 		<style>
 			body {
 				background-color: #e0e0e0;
@@ -20,62 +16,101 @@ import CornellNote from '../components/CornellNote.astro';
 				display: flex;
 				justify-content: center;
 			}
+			.syllabus-list {
+				list-style: none;
+				padding: 0;
+			}
+			.chapter-item {
+				margin-bottom: 25px;
+			}
+			.chapter-title {
+				font-family: 'Nanum Myeongjo', serif;
+				font-weight: 800;
+				font-size: 1.4rem;
+				border-bottom: 2px solid #444;
+				padding-bottom: 5px;
+				margin-bottom: 10px;
+				color: #1a1a1a;
+			}
+			.lesson-list {
+				list-style: none;
+				padding-left: 10px;
+			}
+			.lesson-item {
+				margin: 8px 0;
+				font-family: 'EB Garamond', serif;
+				font-size: 1.2rem;
+			}
+			.lesson-item a {
+				text-decoration: none;
+				color: #4169e1;
+				transition: color 0.2s;
+			}
+			.lesson-item a:hover {
+				color: #d32f2f;
+				text-decoration: underline;
+			}
+			.lesson-item.empty {
+				color: #999;
+				font-style: italic;
+			}
 		</style>
 	</head>
 	<body>
-		<CornellNote title="함수의 극한 (Limits of Functions)" chapter="미적분 I: 01. 함수의 극한과 연속">
+		<CornellNote title="미적분 Ⅰ: 교과서 목차 (Syllabus)" chapter="2022 개정 교육과정">
 			
 			<div slot="cues">
-				<p><b>Q1.</b><br/>극한 문제를 볼 때 알아둬야 하는 게 뭔가요?</p>
+				<p><b>Learning Map</b></p>
+				<p style="font-size: 10pt; line-height: 1.4;">이 책은 개념의 원리를 이해하고 스스로 정리하는 능력을 키우기 위해 설계되었습니다.</p>
 				
 				<div style="margin-top: 50mm;">
-					<p><b>Keywords:</b></p>
-					<ul>
-						<li>최고차항 비교</li>
-						<li>부정형 (0/0)</li>
-						<li>인수분해</li>
+					<p><b>Quick Links:</b></p>
+					<ul style="font-size: 11pt; font-family: 'EB Garamond';">
+						<li><a href="/wiki/chapter01/limits/">01. 함수의 극한</a></li>
 					</ul>
 				</div>
 			</div>
 
 			<section>
-				<p>함수의 극한 문제를 해결할 때는 크게 <b>두 가지 흐름</b>을 파악하는 것이 핵심입니다.</p>
+				<div class="syllabus-list">
+					<!-- Chapter 1 -->
+					<div class="chapter-item">
+						<div class="chapter-title">Ⅰ. 함수의 극한과 연속</div>
+						<ul class="lesson-list">
+							<li class="lesson-item"><a href="/wiki/chapter01/limits/">01. 함수의 극한</a></li>
+							<li class="lesson-item" style="color: #888;">02. 함수의 연속</li>
+						</ul>
+					</div>
 
-				<h4>1. 무한대로 갈 때 ($x \to \infty$)</h4>
-				<p>분수 형태의 식에서는 분모와 분자의 <b>최고차항</b>을 비교합니다.</p>
-				<ul>
-					<li><b>분모의 차수 &gt; 분자의 차수</b>: 극한값은 $0$입니다.</li>
-					<li><b>분모의 차수 = 분자의 차수</b>: 극한값은 <b>최고차항 계수의 비</b>입니다.</li>
-					<li><b>분모의 차수 &lt; 분자의 차수</b>: 무한대($\infty$)로 발산합니다.</li>
-				</ul>
+					<!-- Chapter 2 -->
+					<div class="chapter-item">
+						<div class="chapter-title">Ⅱ. 미분 (Differentiation)</div>
+						<ul class="lesson-list">
+							<li class="lesson-item" style="color: #888;">01. 미분계수</li>
+							<li class="lesson-item" style="color: #888;">02. 도함수</li>
+							<li class="lesson-item" style="color: #888;">03. 도함수의 활용</li>
+						</ul>
+					</div>
 
-				<h4 style="margin-top: 10mm;">2. 상수로 갈 때 ($x \to a$)</h4>
-				<p>대입했을 때 분모가 0이 되는 경우(부정형)를 주의해야 합니다.</p>
-				<ul>
-					<li>분모가 $0$으로 가면, 분자도 반드시 $0$으로 가야 극한값이 존재합니다. ($0/0$ 꼴)</li>
-					<li>이때 분자는 반드시 분모를 $0$으로 만드는 <b>인수 $(x-a)$</b>를 가지고 있습니다.</li>
-				</ul>
-				<p style="font-style: italic; color: #666; font-size: 11pt;">
-					"분모가 0이 된다면, 분자에서 약분할 대상을 찾으세요!"
-				</p>
+					<!-- Chapter 3 -->
+					<div class="chapter-item">
+						<div class="chapter-title">Ⅲ. 적분 (Integration)</div>
+						<ul class="lesson-list">
+							<li class="lesson-item" style="color: #888;">01. 부정적분</li>
+							<li class="lesson-item" style="color: #888;">02. 정적분</li>
+							<li class="lesson-item" style="color: #888;">03. 정적분의 활용</li>
+						</ul>
+					</div>
+				</div>
+
+				<div style="margin-top: 20mm; padding: 15px; background: rgba(0,0,0,0.03); border-radius: 5px; font-style: italic;">
+					<p>"수학은 암기하는 것이 아니라, 정의로부터 논리적으로 쌓아 올리는 지능형 체계입니다."</p>
+				</div>
 			</section>
 
 			<div slot="summary">
-				<p>극한은 <b>'형태'</b>를 보는 연습입니다. 무한대에서는 힘 싸움(차수 비교)을, 상수에서는 0이 되는 원인(인수분해)을 제거하는 것이 핵심 전략입니다.</p>
+				<p>본 교과서는 함수의 미시적 변화(극한/미분)부터 거시적 축적(적분)까지의 과정을 코넬 노트 방식으로 체계화합니다.</p>
 			</div>
 		</CornellNote>
-		
-		<script is:inline>
-			/* Render math formulas after DOM is ready */
-			document.addEventListener("DOMContentLoaded", function() {
-				renderMathInElement(document.body, {
-					delimiters: [
-						{left: '$$', right: '$$', display: true},
-						{left: '$', right: '$', display: false}
-					],
-					throwOnError : false
-				});
-			});
-		</script>
 	</body>
 </html>
