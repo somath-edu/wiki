@@ -79,6 +79,20 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 					<p><b>정답: 1</b></p>
 				</div>
 
+				<h4 style="margin-top: var(--base-grid);">[문제 03] 미정계수의 결정 (수능형)</h4>
+				<p>다음 등식이 성립하도록 하는 상수 $a, b$의 값을 구하시오.</p>
+				<p style="text-align: center; font-size: 1.4rem; margin: var(--base-grid) 0;">
+					{limInf} { "$ \\frac{ax^3 + bx^2 + 5}{x^2 - 1} = 3 $" }
+				</p>
+				<div style="background-color: rgba(65, 105, 225, 0.05); padding: 15px; border-radius: 8px; margin-bottom: var(--base-grid);">
+					<p><b>풀이 전략:</b></p>
+					<ol style="margin-bottom: 0;">
+						<li>{ "<b>차수 비교</b>: 극한값이 $3$(상수)이므로 분자와 분모의 차수가 같아야 합니다. 따라서 분자의 $x^3$ 항은 사라져야 하므로 <b>$a=0$</b>입니다." }</li>
+						<li>{ "<b>계수 비교</b>: 차수가 같을 때 극한값은 최고차항 계수의 비이므로, $\\frac{b}{1} = 3$ 에서 <b>$b=3$</b>입니다." }</li>
+					</ol>
+				</div>
+				<p>{ "<b>정답: $a=0, b=3$</b>" }</p>
+
 				<a href="/wiki/chapter01/limits/" class="back-link">← 개념 공부로 돌아가기</a>
 			</section>
 
