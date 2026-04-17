@@ -1,0 +1,54 @@
+---
+import CornellNote from '../components/CornellNote.astro';
+
+interface Props {
+  title: string;
+  chapter?: string;
+  // Optional extra CSS for page-specific overrides
+  pageStyle?: string;
+}
+
+const { title, chapter, pageStyle } = Astro.props;
+---
+
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+    {pageStyle && <style set:html={pageStyle} />}
+  </head>
+  <body>
+    <CornellNote title={title} chapter={chapter}>
+      <!-- cues slot (왼쪽 힌트 컬럼) -->
+      <slot name="cues" slot="cues" />
+
+      <!-- main content (본문) -->
+      <slot />
+
+      <!-- summary slot (하단 요약) -->
+      <slot name="summary" slot="summary" />
+    </CornellNote>
+
+    <script is:inline>
+      if (typeof window !== 'undefined') {
+        document.addEventListener("DOMContentLoaded", function() {
+          if (typeof renderMathInElement === 'function') {
+            renderMathInElement(document.body, {
+              delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false}
+              ],
+              throwOnError: false
+            });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
