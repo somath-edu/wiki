@@ -28,8 +28,8 @@ body {
 
 .paper {
   background-color: var(--notebook-bg);
-  width: 210mm;
-  max-width: 100%;
+  width: 100%;
+  max-width: 210mm;
   min-height: 297mm;
   padding: var(--base-grid); /* Padding aligned to grid */
   margin: 10mm auto;
@@ -64,6 +64,32 @@ body {
   font-size: 20pt;
   margin: 0;
   line-height: var(--line-height);
+}
+
+.cornell-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.cornell-header-title {
+  flex: 1;
+}
+
+.chapter-label {
+  font-family: var(--header-font);
+  font-size: 10pt;
+  margin: 0;
+  color: #888;
+}
+
+@media screen and (max-width: 600px) {
+  .cornell-header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 }
 
 .cornell-main {
@@ -127,6 +153,10 @@ body {
 
 /* Responsive Styles */
 @media screen and (max-width: 800px) {
+  :root {
+    --base-grid: 24px;
+    --line-height: 24px;
+  }
   body {
     padding: 0;
     overflow-x: hidden;
@@ -139,6 +169,9 @@ body {
     background-size: 100% var(--base-grid);
     min-height: auto;
   }
+  .cornell-header h1 {
+    font-size: 1.5rem;
+  }
   .cornell-main {
     flex-direction: column;
   }
@@ -146,15 +179,33 @@ body {
     flex: none;
     width: 100%;
     border-right: none;
-    border-bottom: 1px dashed var(--sidebar-color);
+    border-bottom: 2px solid var(--sidebar-color);
     padding-right: 0;
     margin-right: 0;
-    margin-bottom: 10px; /* Reduced from 32px to 10px */
-    padding-bottom: 5px;  /* Reduced from 20px to 5px */
+    margin-bottom: 20px;
+    padding-bottom: 15px;
   }
   .cornell-notes {
     padding-left: 0;
+    font-size: 1.1rem;
   }
+}
+
+/* Math formula scrolling wrapper */
+.math-container {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  margin: 10px 0;
+  padding: 10px 0;
+}
+.math-container::-webkit-scrollbar {
+  height: 4px;
+}
+.math-container::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.1);
+  border-radius: 2px;
 }
 
 /* Navigation Buttons */
@@ -192,6 +243,46 @@ body {
   font-style: italic;
   font-size: 1.1rem;
   transition: color 0.2s;
+/* Question Card Layout for Levels */
+.question-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid #eee;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .question-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .sol-button {
+    margin-left: 0 !important;
+    margin-top: 10px;
+  }
+  .question-card {
+    padding: 15px;
+  }
+}
+
+.formula-box {
+  background: #fcfcfc;
+  padding: 15px;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  margin: 15px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .back-link:hover {

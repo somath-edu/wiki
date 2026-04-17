@@ -13,8 +13,8 @@ import CornellNote from '../../../../components/CornellNote.astro';
 		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 		<style>
-			body { background-color: #e0e0e0; margin: 0; padding: 20px; display: flex; justify-content: center; }
-			.sol-box { background: white; padding: 30px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+			body { background-color: #e0e0e0; margin: 0; padding: 10px; display: flex; justify-content: center; }
+			.sol-box { background: white; padding: 10px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
 			.step-title { display: block; font-weight: bold; color: #2e7d32; margin: 20px 0 10px 0; font-size: 1.1rem; }
 			.back-btn { display: inline-block; padding: 10px 20px; background: #333; color: white; border-radius: 8px; text-decoration: none; margin-top: 20px; transition: background 0.2s; }
 			.back-btn:hover { background: #555; }
@@ -30,9 +30,9 @@ import CornellNote from '../../../../components/CornellNote.astro';
 			</div>
 
 			<section>
-				<div class="sol-box">
+				<div class="sol-box formula-box">
 					<p style="margin-bottom: 20px; font-weight: bold;">Q2. 다항함수 { "$ f(x) $" }에 대하여 다음이 성립할 때, { "$ f(3) $" }의 값을 구하시오.</p>
-					<div style="background: #fcfcfc; padding: 15px; border: 1px solid #f0f0f0; border-radius: 8px; margin: 15px 0;">
+					<div style="background: #fcfcfc; padding: 10px; border: 1px solid #f0f0f0; border-radius: 8px; margin: 15px 0;">
 						(가) { "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{f(x)-x^3}{x^2} = -2 $" }<br/>
 						(나) { "$ \\displaystyle \\lim_{x \\to 2} \\frac{f(x)}{x-2} = 10 $" }
 					</div>
@@ -51,7 +51,7 @@ import CornellNote from '../../../../components/CornellNote.astro';
 				</div>
 
 				<div style="text-align: center;">
-					<a href="/wiki/chapter01/levels/type03-high/" class="back-btn">← 문제로 돌아가기</a>
+					<a href="/wiki/chapter01/levels/type03-high/" class="problem-link mobile-nav-btn">← 문제로 돌아가기</a>
 				</div>
 			</section>
 		</CornellNote>

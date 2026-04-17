@@ -55,42 +55,42 @@ import CornellNote from '../../../components/CornellNote.astro';
 				<div class="type-section">
 					<p style="margin-bottom: 20px;">무리식의 기본적인 유리화 과정을 반복 연습합니다.</p>
 					
-					<div style="background: white; padding: 25px; border-radius: 16px; border: 1px solid #eee; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-						<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+					<div class="question-card">
+						<div class="question-header">
 							<p style="margin: 0;"><b>Q1.</b> 다음 극한값을 구하시오.</p>
 							<a href="/wiki/chapter01/solutions/type02-low/q1" class="sol-button">풀이 💡</a>
 						</div>
-						<p style="text-align: center; font-size: 1.4rem; margin: 20px 0;">
+						<div class="formula-box" style="text-align: center;">
 							{ "$ \\displaystyle \\lim_{x \\to \\infty} (\\sqrt{x^2 + x} - x) $" }
-						</p>
+						</div>
 					</div>
 
 					<!-- Q2 -->
-					<div style="background: white; padding: 25px; border-radius: 16px; border: 1px solid #eee; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-						<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+					<div class="question-card">
+						<div class="question-header">
 							<p style="margin: 0;"><b>Q2.</b> 다음 극한값을 구하시오.</p>
 							<a href="/wiki/chapter01/solutions/type02-low/q2" class="sol-button">풀이 💡</a>
 						</div>
-						<p style="text-align: center; font-size: 1.4rem; margin: 20px 0;">
+						<div class="formula-box" style="text-align: center;">
 							{ "$ \\displaystyle \\lim_{x \\to \\infty} (\\sqrt{x^2 + 4x} - x) $" }
-						</p>
+						</div>
 					</div>
 
 					<!-- Q3 -->
-					<div style="background: white; padding: 25px; border-radius: 16px; border: 1px solid #eee; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-						<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+					<div class="question-card">
+						<div class="question-header">
 							<p style="margin: 0;"><b>Q3.</b> 다음 극한값을 구하시오.</p>
 							<a href="/wiki/chapter01/solutions/type02-low/q3" class="sol-button">풀이 💡</a>
 						</div>
-						<p style="text-align: center; font-size: 1.4rem; margin: 20px 0;">
+						<div class="formula-box" style="text-align: center;">
 							{ "$ \\displaystyle \\lim_{x \\to \\infty} \\sqrt{x}(\\sqrt{x+1} - \\sqrt{x}) $" }
-						</p>
+						</div>
 					</div>
 				</div>
 
-				<div style="margin-top: 40px; display: flex; gap: 15px;">
-					<a href="/wiki/chapter01/types/type02/" style="color: #666; text-decoration: none;">← 핵심 문제로 이동</a>
-					<a href="/wiki/chapter01/problems-inf/" style="color: #666; text-decoration: none;">목록으로 돌아가기</a>
+				<div style="margin-top: 40px; display: flex; flex-wrap: wrap; gap: 15px;">
+					<a href="/wiki/chapter01/types/type02/" class="problem-link" style="margin: 0;">← 핵심 문제로 이동</a>
+					<a href="/wiki/chapter01/problems-inf/" class="problem-link" style="margin: 0; background-color: rgba(0,0,0,0.05); color: #666;">목록으로 돌아가기</a>
 				</div>
 			</section>
 		</CornellNote>

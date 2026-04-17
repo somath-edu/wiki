@@ -10,13 +10,13 @@ import '../styles/cornell.css';
 
 <div class="paper">
 	<header class="cornell-header">
-			<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 20px;">
-				<div style="flex: 1;">
-					{chapter && <p style="font-family: var(--header-font); font-size: 10pt; margin: 0; color: #888;">{chapter}</p>}
+			<div class="cornell-header-flex">
+				<div class="cornell-header-title">
+					{chapter && <p class="chapter-label">{chapter}</p>}
 					<h1 style="word-break: keep-all;">{title}</h1>
 				</div>
 				{!title.includes("목차") && 
-					<a href="/wiki/" class="problem-link" style="margin-left: 0; background-color: rgba(0,0,0,0.05); color: #555; border-color: #ddd; flex-shrink: 0; white-space: nowrap;">📋 전체 목차</a>
+					<a href="/wiki/" class="problem-link mobile-nav-btn">📋 전체 목차</a>
 				}
 			</div>
 	</header>
