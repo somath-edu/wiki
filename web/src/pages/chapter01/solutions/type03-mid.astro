@@ -1,0 +1,144 @@
+---
+import CornellNote from '../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 03 [중] - 상세 해설</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body {
+				background-color: #e0e0e0;
+				margin: 0;
+				padding: 20px;
+				display: flex;
+				justify-content: center;
+			}
+			.sol-box {
+				background: #fff;
+				padding: 25px;
+				border-radius: 16px;
+				border: 1px solid #eee;
+				margin-bottom: 40px;
+				box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+			}
+			.problem-summary {
+				background: #f8f9fa;
+				padding: 15px;
+				border-radius: 8px;
+				border-left: 4px solid #1a73e8;
+				margin-bottom: 20px;
+				font-size: 0.95rem;
+				color: #555;
+			}
+			.step-title {
+				font-weight: bold;
+				color: #1a73e8;
+				margin-top: 15px;
+				display: block;
+			}
+			.back-btn {
+				display: inline-block;
+				padding: 10px 20px;
+				background: #333;
+				color: #fff;
+				text-decoration: none;
+				border-radius: 8px;
+				font-weight: bold;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 03 [중] 상세 해설" chapter="Solutions">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">📝 실력 향상 포인트</p>
+				<p style="margin-top: 10px; font-size: 10pt; line-height: 1.6; color: #666;">
+					무리식이 포함된 미정계수 문제는 유리화 전후의 분자 형태를 비교하여 계수를 찾아내는 것이 핵심입니다.
+				</p>
+			</div>
+
+			<section>
+				<a href="/wiki/chapter01/levels/type03-mid/" class="back-btn">← 문제로 돌아가기</a>
+
+				<!-- Q1 Solution -->
+				<div class="sol-box" id="q1">
+					<div class="problem-summary">
+						<b>Q1.</b> 다음 등식이 성립하도록 하는 상수 { "$ a, b $" }의 값을 구하시오.<br/>
+						{ "$ \\displaystyle \\lim_{x \\to 1} \\frac{a\\sqrt{x} + b}{x-1} = 2 $" }
+					</div>
+					<span class="step-title">Step 1. 분자 조건 확인</span>
+					<p>분모가 { "$ x-1 \\to 0 $" }이므로 분자도 { "$ a\\sqrt{1} + b = 0 \\Rightarrow b = -a $" } 입니다.</p>
+					
+					<span class="step-title">Step 2. 식 대입 및 유리화</span>
+					<p>{ "$ \\displaystyle \\lim_{x \\to 1} \\frac{a(\\sqrt{x}-1)}{x-1} $" } 에서 분자를 유리화하면,<br/>
+					{ "$ \\displaystyle \\lim_{x \\to 1} \\frac{a(x-1)}{(x-1)(\\sqrt{x}+1)} = \\displaystyle \\lim_{x \\to 1} \\frac{a}{\\sqrt{x}+1} = \\frac{a}{2} $" }</p>
+					
+					<span class="step-title">Step 3. 상수 $a, b$ 결정</span>
+					<p>{ "$ a/2 = 2 \\Rightarrow \\mathbf{a = 4} $" } 이고 { "$ b = -4 $" } 입니다.</p>
+				</div>
+
+				<!-- Q2 Solution -->
+				<div class="sol-box" id="q2">
+					<div class="problem-summary">
+						<b>Q2.</b> 다음 등식이 성립하도록 하는 상수 { "$ a, b $" }의 값을 구하시오.<br/>
+						{ "$ \\displaystyle \\lim_{x \\to 3} \\frac{x-3}{\\sqrt{x+a} - b} = 4 $" }
+					</div>
+					<span class="step-title">Step 1. 분모 조건</span>
+					<p>분자가 { "$ 0 $" }으로 가고 극한값이 { "$ 0 $" }이 아니므로 분모도 { "$ 0 $" }이어야 합니다.<br/>
+					{ "$ \\sqrt{3+a} - b = 0 \\Rightarrow b = \\sqrt{3+a} $" }</p>
+					
+					<span class="step-title">Step 2. 분모 유리화</span>
+					<p>{ "$ \\displaystyle \\lim_{x \\to 3} \\frac{(x-3)(\\sqrt{x+a}+b)}{(x+a)-b^2} = \\displaystyle \\lim_{x \\to 3} \\frac{(x-3)(\\sqrt{x+a}+b)}{x+a-(3+a)} = \\displaystyle \\lim_{x \\to 3} \\frac{(x-3)(\\sqrt{x+a}+b)}{x-3} $" }</p>
+					
+					<span class="step-title">Step 3. 최종 계산</span>
+					<p>{ "$ \\sqrt{3+a} + b = 2b = 4 \\Rightarrow \\mathbf{b = 2} $" }<br/>
+					{ "$ \\sqrt{3+a} = 2 \\Rightarrow 3+a = 4 \\Rightarrow \\mathbf{a = 1} $" } 입니다.</p>
+				</div>
+
+				<!-- Q3 Solution -->
+				<div class="sol-box" id="q3">
+					<div class="problem-summary">
+						<b>Q3.</b> 다음 등식을 만족시키는 상수 { "$ a, b $" }에 대하여 { "$ a+b $" }의 값을 구하시오.<br/>
+						{ "$ \\displaystyle \\lim_{x \\to 2} \\frac{\\sqrt{x+a}-2}{x-2} = b $" }
+					</div>
+					<span class="step-title">Step 1. 분자 조건 확인</span>
+					<p>{ "$ \\sqrt{2+a} - 2 = 0 \\Rightarrow \\sqrt{2+a} = 2 \\Rightarrow \\mathbf{a = 2} $" } 입니다.</p>
+					
+					<span class="step-title">Step 2. 극한값 $b$ 계산</span>
+					<p>{ "$ a=2 $" }를 대입하여 유리화하면:<br/>
+					{ "$ \\displaystyle \\lim_{x \\to 2} \\frac{\\sqrt{x+2}-2}{x-2} = \\displaystyle \\lim_{x \\to 2} \\frac{(x+2)-4}{(x-2)(\\sqrt{x+2}+2)} = \\displaystyle \\lim_{x \\to 2} \\frac{1}{\\sqrt{x+2}+2} = \\mathbf{\\frac{1}{4}} $" }</p>
+					
+					<span class="step-title">Step 3. 결과 구하기</span>
+					<p>{ "$ a+b = 2 + 1/4 = \\mathbf{\\frac{9}{4}} $" } 입니다.</p>
+				</div>
+
+				<div style="text-align: center; margin-top: 30px;">
+					<a href="/wiki/chapter01/levels/type03-mid/" class="back-btn">실력 향상 연습으로 돌아가기</a>
+				</div>
+			</section>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

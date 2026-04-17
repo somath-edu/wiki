@@ -1,0 +1,159 @@
+---
+import CornellNote from '../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 03 [수능] - 상세 해설</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body {
+				background-color: #e0e0e0;
+				margin: 0;
+				padding: 20px;
+				display: flex;
+				justify-content: center;
+			}
+			.sol-box {
+				background: #fff;
+				padding: 25px;
+				border-radius: 16px;
+				border: 1px solid #eee;
+				margin-bottom: 40px;
+				box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+			}
+			.problem-summary {
+				background: #fcfcfc;
+				padding: 15px;
+				border: 1px solid #f0f0f0;
+				border-radius: 8px;
+				margin-bottom: 20px;
+				font-size: 0.95rem;
+				color: #333;
+				line-height: 1.6;
+			}
+			.step-title {
+				font-weight: bold;
+				color: #d32f2f;
+				margin-top: 15px;
+				display: block;
+			}
+			.back-btn {
+				display: inline-block;
+				padding: 10px 20px;
+				background: #333;
+				color: #fff;
+				text-decoration: none;
+				border-radius: 8px;
+				font-weight: bold;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 03 [수능] 상세 해설" chapter="Solutions">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 수능 해법</p>
+				<p style="margin-top: 10px; font-size: 10pt; line-height: 1.6; color: #666;">
+					함수 추론 문항에서는 무한대 발산 조건과 특정 상수 수렴 조건을 결합하여 다항식의 전체 식을 구성하는 능력이 필수적입니다.
+				</p>
+			</div>
+
+			<section>
+				<a href="/wiki/chapter01/levels/type03-high/" class="back-btn">← 문제로 돌아가기</a>
+
+				<!-- Q1 Solution -->
+				<div class="sol-box" id="q1">
+					<div class="problem-summary">
+						<b>Q1.</b> 다항함수 { "$ f(x) $" }가 다음 두 조건을 만족시킬 때, { "$ f(2) $" }의 값을 구하시오.<br/>
+						(가) { "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{f(x)}{3x^2 + x - 1} = 1 $" }<br/>
+						(나) { "$ \\displaystyle \\lim_{x \\to 1} \\frac{f(x)}{x-1} = 4 $" }
+					</div>
+					<span class="step-title">Step 1. 최고차항 결정 (조건 가)</span>
+					<p>무한대 극한값이 { "$ 1 $" }이므로 { "$ f(x) $" }는 { "$ 2 $" }차식이며 최고차항 계수는 { "$ 3 $" }입니다.<br/>
+					따라서 { "$ f(x) = 3x^2 + ax + b $" }로 둘 수 있습니다.</p>
+					
+					<span class="step-title">Step 2. 인수 함유 확인 (조건 나)</span>
+					<p>{ "$ x \to 1 $" }일 때 분모가 { "$ 0 $" }이므로 { "$ f(1) = 0 $" }이어야 합니다.<br/>
+					즉, { "$ f(x) = 3(x-1)(x-k) $" } 로 설정하면 편리합니다.</p>
+					
+					<span class="step-title">Step 3. 상수 $k$ 구하기</span>
+					<p>{ "$ \\displaystyle \\lim_{x \\to 1} \\frac{3(x-1)(x-k)}{x-1} = 3(1-k) = 4 \\Rightarrow 1-k = 4/3 \\Rightarrow k = -1/3 $" }<br/>
+					따라서 { "$ f(x) = 3(x-1)(x + 1/3) = (x-1)(3x+1) $" } 입니다.</p>
+					
+					<span class="step-title">Step 4. 결과 도출</span>
+					<p>{ "$ f(2) = (2-1)(3 \cdot 2 + 1) = 1 \cdot 7 = \\mathbf{7} $" } 입니다.</p>
+				</div>
+
+				<!-- Q2 Solution -->
+				<div class="sol-box" id="q2">
+					<div class="problem-summary">
+						<b>Q2.</b> 다항함수 { "$ f(x) $" }에 대하여 다음이 성립할 때, { "$ f(3) $" }의 값을 구하시오.<br/>
+						(가) { "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{f(x)-x^3}{x^2} = -2 $" }<br/>
+						(나) { "$ \\displaystyle \\lim_{x \\to 0} \\frac{f(x)}{x} = 5 $" }
+					</div>
+					<span class="step-title">Step 1. 다항식 형태 추론 (조건 가)</span>
+					<p>분모가 { "$ 2 $" }차이므로 분자 { "$ f(x)-x^3 $" } 도 { "$ 2 $" }차여야 하며, 최고차항 계수는 { "$ -2 $" }입니다.<br/>
+					{ "$ f(x) = x^3 - 2x^2 + ax + b $" }</p>
+					
+					<span class="step-title">Step 2. 하위 차수 결정 (조건 나)</span>
+					<p>{ "$ x \to 0 $" }일 때 분모가 { "$ 0 $" }이므로 { "$ f(0) = 0 $" }, 즉 상수항 { "$ b=0 $" } 입니다.<br/>
+					또한 극한값 { "$ 5 $" }는 { "$ x $" }항의 계수이므로 { "$ a=5 $" } 임을 즉시 알 수 있습니다.</p>
+					
+					<span class="step-title">Step 3. 결과 도출</span>
+					<p>{ "$ f(x) = x^3 - 2x^2 + 5x $" } 이므로,<br/>
+					{ "$ f(3) = 27 - 18 + 15 = \\mathbf{24} $" } 입니다.</p>
+				</div>
+
+				<!-- Q3 Solution -->
+				<div class="sol-box" id="q3">
+					<div class="problem-summary">
+						<b>Q3.</b> 삼차함수 { "$ f(x) $" }가 다음 조건을 만족한다. { "$ f(4) $" }의 값을 구하시오.<br/>
+						(가) { "$ \\displaystyle \\lim_{x \\to 1} \\frac{f(x)}{x-1} = 6 $" }<br/>
+						(나) { "$ \\displaystyle \\lim_{x \\to 2} \\frac{f(x)}{x-2} = 9 $" }
+					</div>
+					<span class="step-title">Step 1. 인수 결정</span>
+					<p>{ "$ f(x) $" }는 삼차함수이고 { "$ (x-1) $" }과 { "$ (x-2) $" }를 인수로 가집니다.<br/>
+					{ "$ f(x) = (x-1)(x-2)(ax+b) $" } 로 설정합니다.</p>
+					
+					<span class="step-title">Step 2. 조건 (가) 대입</span>
+					<p>{ "$ \\displaystyle \\lim_{x \\to 1} \\frac{(x-1)(x-2)(ax+b)}{x-1} = -1 \cdot (a+b) = 6 \\Rightarrow a+b = -6 $" }</p>
+					
+					<span class="step-title">Step 3. 조건 (나) 대입</span>
+					<p>{ "$ \\displaystyle \\lim_{x \\to 2} \\frac{(x-1)(x-2)(ax+b)}{x-2} = 1 \cdot (2a+b) = 9 \\Rightarrow 2a+b = 9 $" }</p>
+					
+					<span class="step-title">Step 4. 연립 및 최종값</span>
+					<p>{ "$ a = 15, \\ b = -21 $" } 이므로<br/>
+					{ "$ f(x) = (x-1)(x-2)(15x-21) $" }<br/>
+					{ "$ f(4) = (3)(2)(15 \cdot 4 - 21) = 6 \cdot (60-21) = 6 \cdot 39 = \\mathbf{234} $" }</p>
+				</div>
+
+				<div style="text-align: center; margin-top: 30px;">
+					<a href="/wiki/chapter01/levels/type03-high/" class="back-btn">도전 페이지로 돌아가기</a>
+				</div>
+			</section>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>
