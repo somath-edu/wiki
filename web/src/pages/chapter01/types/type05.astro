@@ -31,9 +31,9 @@ const limConst = "$\\displaystyle \\lim_{x \\to 2}$";
 			<div slot="cues">
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
-					<li>무리식이 보이면 먼저 **켤레식** 곱하기</li>
-					<li>유리화를 통해 분모/분자에서 공통인수 추출</li>
-					<li>약분 후 극한값 대입</li>
+					<li>식에 **루트**가 보이면 유리화 먼저 검토</li>
+					<li>분모와 분자에 **켤레식** 곱하기</li>
+					<li>유리화 이후 숨겨진 **영인자** 약분하기</li>
 				</ul>
 			</div>
 
@@ -51,7 +51,7 @@ const limConst = "$\\displaystyle \\lim_{x \\to 2}$";
 					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
 						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략 (클릭하여 확인)</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.6;">
-							무리식이 포함된 { "$ 0/0 $" } 꼴입니다. <b>유리화</b>를 통해 분자에서 { "$ (x-2) $" } 인수를 끄집어내는 것이 핵심입니다.
+							무리식이 포함된 { "$ 0/0 $" } 꼴입니다. 분자를 <b>유리화</b>하면 분모에 있는 <b>영인자 { "$ (x-2) $" }</b>와 약분할 수 있는 인수가 분자에서 나타나게 됩니다.
 						</div>
 					</details>
 
@@ -59,10 +59,11 @@ const limConst = "$\\displaystyle \\lim_{x \\to 2}$";
 					<details style="margin-top: 15px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
 						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이 (마지막에 열어보세요!)</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
-							<p><b>Step 1. 형태 확인 및 켤레식 설정</b><br/>$x \to 2$일 때 $0/0$ 꼴이므로 분자의 켤레식인 { "$ (\\sqrt{x+2} + 2) $" }를 분모와 분자에 각각 곱합니다.</p>
-							<p><b>Step 2. 유리화 진행</b><br/>분자는 { "$ (x+2) - 4 = x-2 $" }가 됩니다.</p>
-							<p><b>Step 3. 약분 후 마무리</b><br/>분모와 분자의 { "$ (x-2) $" }를 약분하면 분모에 { "$ (\\sqrt{x+2} + 2) $" }만 남습니다.<br/>
-							{ "$ \\displaystyle \\lim_{x \\to 2} \\frac{1}{\\sqrt{x+2} + 2} = \\frac{1}{2+2} = \\frac{1}{4} $" } 입니다.</p>
+							<p><b>Step 1. 켤레식 곱하기</b><br/>분자의 켤레식인 { "$ \\sqrt{x+2} + 2 $" }를 분모와 분자에 각각 곱해줍니다.</p>
+							<p><b>Step 2. 유리화 및 약분</b><br/>분자는 { "$ (x+2) - 4 = x-2 $" }가 되어 분모의 { "$ (x-2) $" }와 약분됩니다.<br/>
+							{ "$ \\frac{1}{\\sqrt{x+2} + 2} $" }</p>
+							<p><b>Step 3. 극한값 대입</b><br/>약분 후 남은 식에 { "$ x=2 $" }를 대입합니다.<br/>
+							{ "$ \\text{극한값} = \\frac{1}{\\sqrt{2+2} + 2} = \\frac{1}{4} $" } 입니다.</p>
 						</div>
 					</details>
 
@@ -75,15 +76,22 @@ const limConst = "$\\displaystyle \\lim_{x \\to 2}$";
 							<a href="/wiki/chapter01/levels/type05-low/" style="flex: 1; padding: 15px; background: #eef7ee; color: #2e7d32; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #2e7d32; font-size: 1.3rem;">
 								[하]
 							</a>
+							<div style="flex: 1; padding: 15px; background: #f0f0f0; color: #aaa; text-align: center; border-radius: 12px; font-weight: bold; border: 1.5px solid #ddd; font-size: 1.3rem; cursor: not-allowed;">
+								[중]
+							</div>
+							<div style="flex: 1; padding: 15px; background: #f0f0f0; color: #aaa; text-align: center; border-radius: 12px; font-weight: bold; border: 1.5px solid #ddd; font-size: 1.3rem; cursor: not-allowed;">
+								[수능]
+							</div>
 						</div>
+						<p style="margin-top: 10px; font-size: 9pt; color: #999; text-align: center;">※ [중], [수능] 난이도는 준비 중입니다.</p>
 					</div>
 				</div>
 
-				<a href="/wiki/chapter01/problems-const/" class="back-link" style="margin-top: 40px; display: inline-block;">← 유형별 목록으로 돌아가기</a>
+				<a href="/wiki/chapter01/problems-const/" class="back-link" style="margin-top: 40px; display: inline-block; color: #666; text-decoration: none;">← 유형별 목록으로 돌아가기</a>
 			</section>
 
 			<div slot="summary">
-				<p>루트($\sqrt{\quad}$)가 있더라도 당황하지 마세요. **'유리화'**만 하면 결국 다항식 문제와 똑같은 원점(약분)으로 돌아옵니다!</p>
+				<p>무리식의 상수 극한은 **'유리화'**라는 안경을 쓰고 문제를 바라보는 것이 중요합니다. 켤레식을 곱하는 것만으로 보이지 않던 약분 인수가 마법처럼 나타납니다!</p>
 			</div>
 		</CornellNote>
 
