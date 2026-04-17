@@ -1,0 +1,75 @@
+---
+import CornellNote from '../../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 03 [중] - Q2 상세 해설</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body { background-color: #e0e0e0; margin: 0; padding: 20px; display: flex; justify-content: center; }
+			.sol-box { background: white; padding: 30px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+			.step-title { display: block; font-weight: bold; color: #2e7d32; margin: 20px 0 10px 0; font-size: 1.1rem; }
+			.back-btn { display: inline-block; padding: 10px 20px; background: #333; color: white; border-radius: 8px; text-decoration: none; margin-top: 20px; transition: background 0.2s; }
+			.back-btn:hover { background: #555; }
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 03 [중] Q2 상세 해설" chapter="Solution">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 풀이 전략</p>
+				<p style="margin-top: 10px; font-size: 10pt; line-height: 1.6; color: #666;">
+					분모를 유리화하여 분자로 식을 올린 뒤 극한값을 계산하는 것이 수월합니다.
+				</p>
+			</div>
+
+			<section>
+				<div class="sol-box">
+					<p style="margin-bottom: 20px; font-weight: bold;">Q2. 다음 등식이 성립하도록 하는 상수 { "$ a, b $" }의 값을 구하시오.</p>
+					<p style="text-align: center; font-size: 1.25rem; background: #fcfcfc; padding: 15px; border-radius: 12px;">
+						{ "$ \\displaystyle \\lim_{x \\to 3} \\frac{x-3}{\\sqrt{x+a} - b} = 4 $" }
+					</p>
+
+					<span class="step-title">Step 1. 영인자 분석</span>
+					<p>{ "$ x \\to 3 $" }일 때 분자가 { "$ 0 $" }으로 가고 극한값이 { "$ 4 \\neq 0 $" }이므로 분모도 { "$ 0 $" }으로 가야 합니다.<br/>
+					{ "$ \\sqrt{3+a} - b = 0 \\implies b = \\sqrt{3+a} $" }</p>
+
+					<span class="step-title">Step 2. 분모 유리화</span>
+					<p>분모의 켤레식을 곱하여 유리화하면:<br/>
+					{ "$ \\displaystyle \\lim_{x \\to 3} \\frac{(x-3)(\\sqrt{x+a} + b)}{(x+a) - b^2} = 4 $" }</p>
+
+					<span class="step-title">Step 3. 상수 도출</span>
+					<p>{ "$ b^2 = 3+a $" }이므로 분모는 { "$ x-3 $" }이 되어 분자와 약분됩니다.<br/>
+					{ "$ \\displaystyle \\lim_{x \\to 3} (\\sqrt{x+a} + b) = b + b = 2b = 4 \\implies b = 2 $" }<br/>
+					{ "$ b=2 $" }를 대입하면 { "$ \\sqrt{3+a} = 2 \\implies 3+a = 4 \\implies a = 1 $" }입니다.</p>
+				</div>
+
+				<div style="text-align: center;">
+					<a href="/wiki/chapter01/levels/type03-mid/" class="back-btn">← 문제로 돌아가기</a>
+				</div>
+			</section>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

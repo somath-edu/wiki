@@ -1,0 +1,76 @@
+---
+import CornellNote from '../../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 01 [수능] - Q2 상세 해설</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body { background-color: #e0e0e0; margin: 0; padding: 20px; display: flex; justify-content: center; }
+			.sol-box { background: white; padding: 30px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+			.step-title { display: block; font-weight: bold; color: #1a73e8; margin: 20px 0 10px 0; font-size: 1.1rem; }
+			.back-btn { display: inline-block; padding: 10px 20px; background: #333; color: white; border-radius: 8px; text-decoration: none; margin-top: 20px; transition: background 0.2s; }
+			.back-btn:hover { background: #555; }
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 01 [수능] Q2 상세 해설" chapter="Level: CSAT">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 풀이 전략</p>
+				<p style="margin-top: 10px; font-size: 10pt; line-height: 1.6; color: #666;">
+					각 함수의 최고차항 정보를 추출한 뒤, 곱해진 형태의 최고차항 계수비를 구합니다.
+				</p>
+			</div>
+
+			<section>
+				<div class="sol-box">
+					<p style="margin-bottom: 20px; font-weight: bold;">Q2. 두 다항함수 { "$ f(x), g(x) $" }가 다음을 만족할 때, 극한값 { "$ L $" }을 구하시오.</p>
+					<div style="background: #fcfcfc; padding: 15px; border: 1px solid #f0f0f0; border-radius: 8px; margin: 15px 0; text-align: center;">
+						{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{f(x)}{x^2} = 2 $" } ,&nbsp; { "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{g(x)}{x} = 3 $" }
+					</div>
+					<p style="text-align: center; font-size: 1.25rem;">
+						{ "$ L = \\displaystyle \\lim_{x \\to \\infty} \\frac{f(x)g(x)}{2x^3 + x} $" }
+					</p>
+
+					<span class="step-title">Step 1. 각각의 함수 추론</span>
+					<p>{ "$ f(x) $" }는 최고차항이 { "$ 2x^2 $" }인 다항식이고,<br/>
+					{ "$ g(x) $" }는 최고차항이 { "$ 3x $" }인 다항식입니다.</p>
+
+					<span class="step-title">Step 2. 분자의 최고차항 결정</span>
+					<p>{ "$ f(x)g(x) $" }의 최고차항은 { "$ 2x^2 \\cdot 3x = 6x^3 $" }이 됩니다.</p>
+
+					<span class="step-title">Step 3. 극한값 구하기</span>
+					<p>주어진 식 { "$ L $" }의 분모의 최고차항은 { "$ 2x^3 $" }이므로:<br/>
+					{ "$ L = \\displaystyle \\frac{6}{2} = 3 $" }</p>
+				</div>
+
+				<div style="text-align: center;">
+					<a href="/wiki/chapter01/levels/type01-high/" class="back-btn">← 문제로 돌아가기</a>
+				</div>
+			</section>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>
