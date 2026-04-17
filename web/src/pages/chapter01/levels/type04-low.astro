@@ -1,0 +1,87 @@
+---
+import CornellNote from '../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 04 - 난이도 [하] 연습</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body { background-color: #e0e0e0; margin: 0; padding: 20px; display: flex; justify-content: center; }
+			.sol-button {
+				display: inline-block; padding: 4px 12px; background: #eef7ee; color: #2e7d32;
+				border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: bold;
+				margin-left: 10px; border: 1.5px solid #2e7d32; transition: all 0.2s ease;
+			}
+			.sol-button:hover { background: #2e7d32; color: white; transform: translateY(-1px); }
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 04. 0/0 꼴 다항식 [하]" chapter="Level: Low">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🟢 기본 원리</p>
+				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
+					<li>인수분해를 통한 공통인수 제거</li>
+					<li>{ "$ x \to a $" } 대입 시 { "$ x-a $" } 찾기</li>
+				</ul>
+			</div>
+
+			<section>
+				<div class="type-section">
+					<p style="margin-bottom: 20px;">가장 기본적인 인수분해 연습입니다. 분모를 0으로 만드는 원인을 제거해 보세요.</p>
+					
+					<!-- Q1 -->
+					<div class="question-card">
+						<div class="question-header">
+							<p style="margin: 0;"><b>Q1.</b> 극한값 { "$ \\displaystyle \\lim_{x \\to 1} \\frac{x^2 - 1}{x - 1} $" }을 구하시오.</p>
+							<a href="/wiki/chapter01/solutions/type04-low/q1" class="sol-button">풀이 💡</a>
+						</div>
+					</div>
+
+					<!-- Q2 -->
+					<div class="question-card">
+						<div class="question-header">
+							<p style="margin: 0;"><b>Q2.</b> 극한값 { "$ \\displaystyle \\lim_{x \\to 2} \\frac{x^2 + x - 6}{x - 2} $" }을 구하시오.</p>
+							<a href="/wiki/chapter01/solutions/type04-low/q2" class="sol-button">풀이 💡</a>
+						</div>
+					</div>
+
+					<!-- Q3 -->
+					<div class="question-card">
+						<div class="question-header">
+							<p style="margin: 0;"><b>Q3.</b> 극한값 { "$ \\displaystyle \\lim_{x \\to -1} \\frac{x^2 + 3x + 2}{x + 1} $" }을 구하시오.</p>
+							<a href="/wiki/chapter01/solutions/type04-low/q3" class="sol-button">풀이 💡</a>
+						</div>
+					</div>
+				</div>
+
+				<div style="margin-top: 40px; display: flex; gap: 15px;">
+					<a href="/wiki/chapter01/types/type04/" style="color: #666; text-decoration: none;">← 핵심 문제로 이동</a>
+					<a href="/wiki/chapter01/problems-const/" style="color: #666; text-decoration: none;">목록으로 돌아가기</a>
+				</div>
+			</section>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>
