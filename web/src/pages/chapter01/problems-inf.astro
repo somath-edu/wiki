@@ -30,6 +30,17 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 				border-left: 3px solid #ccc;
 				margin: 10px 0;
 			}
+			/* Mobile Optimization for Type Headers */
+			@media screen and (max-width: 600px) {
+				.type-header {
+					flex-direction: column !important;
+					align-items: flex-start !important;
+					gap: 10px;
+				}
+				.problem-link {
+					margin-left: 0 !important;
+				}
+			}
 		</style>
 	</head>
 	<body>
@@ -48,11 +59,11 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 			<section>
 				<!-- Type 01 -->
 				<div class="type-section" id="type01">
-					<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+					<div class="type-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
 						<h4 style="margin: 0; color: #1a1a1a; border-bottom: 2px solid royalblue; display: inline-block; padding-bottom: 5px;">
-							유형 01. 기본 유리함수
+							유형 01. 유리함수
 						</h4>
-						<a href="/wiki/chapter01/types/type01/" class="problem-link">유형 01 연습 ✏️</a>
+						<a href="/wiki/chapter01/types/type01/" class="problem-link">연습 ✏️</a>
 					</div>
 					<p>다음 극한값을 구하시오.</p>
 					<p style="text-align: center; font-size: 1.4rem; margin: var(--base-grid) 0;">
@@ -62,11 +73,11 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 
 				<!-- Type 02 -->
 				<div class="type-section" id="type02">
-					<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+					<div class="type-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
 						<h4 style="margin: 0; color: #1a1a1a; border-bottom: 2px solid royalblue; display: inline-block; padding-bottom: 5px;">
-							유형 02. 무리식이 포함된 경우
+							유형 02. 무리식
 						</h4>
-						<a href="/wiki/chapter01/types/type02/" class="problem-link">유형 02 연습 ✏️</a>
+						<a href="/wiki/chapter01/types/type02/" class="problem-link">연습 ✏️</a>
 					</div>
 					<p>다음 극한값을 구하시오.</p>
 					<p style="text-align: center; font-size: 1.4rem; margin: var(--base-grid) 0;">
@@ -76,11 +87,11 @@ const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
 
 				<!-- Type 03 -->
 				<div class="type-section" id="type03">
-					<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+					<div class="type-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
 						<h4 style="margin: 0; color: #1a1a1a; border-bottom: 2px solid royalblue; display: inline-block; padding-bottom: 5px;">
-							유형 03. 미정계수의 결정
+							유형 03. 미정계수
 						</h4>
-						<a href="/wiki/chapter01/types/type03/" class="problem-link">유형 03 연습 ✏️</a>
+						<a href="/wiki/chapter01/types/type03/" class="problem-link">연습 ✏️</a>
 					</div>
 					<p>다음 등식이 성립하도록 하는 상수 $a, b$의 값을 구하시오.</p>
 					<p style="text-align: center; font-size: 1.4rem; margin: var(--base-grid) 0;">
