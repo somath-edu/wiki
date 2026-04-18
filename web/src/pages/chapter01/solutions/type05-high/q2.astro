@@ -1,0 +1,83 @@
+---
+import CornellNote from '../../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 05 [수능] - Q2 상세 해설</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body { background-color: #e0e0e0; margin: 0; padding: 10px; display: flex; justify-content: center; }
+			.sol-box { background: white; padding: 20px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+			.step-title { display: block; font-weight: bold; color: #c62828; margin: 25px 0 10px 0; font-size: 1.1rem; border-left: 4px solid #c62828; padding-left: 10px; }
+			.formula-display { text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 15px; border-radius: 12px; margin: 15px 0; }
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 05 [수능] Q2 상세 해설" chapter="Solution">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 수능적 접근</p>
+				<ul style="margin-top: 10px; padding-left: 18px; font-size: 10pt; line-height: 1.6; color: #666;">
+					<li>{ "$ x - 4 = (\\sqrt{x}-2)(\\sqrt{x}+2) $" }임을 이용합니다.</li>
+					<li>두 극한의 분모가 서로 어떤 관계인지 파악하는 것이 핵심입니다.</li>
+				</ul>
+			</div>
+
+			<section>
+				<div class="sol-box">
+					<p style="margin-bottom: 20px; font-weight: bold;">Q2. 다항함수 { "$ f(x) $" }에 대하여 { "$ f(4)=0 $" }이고 다음이 성립할 때, { "$ \\displaystyle \\lim_{x \\to 4} \\frac{f(x)}{x-4} $" }의 값을 구하시오.</p>
+					<div class="formula-display">
+						{ "$ \\displaystyle \\lim_{x \\to 4} \\frac{f(x)}{\\sqrt{x}-2} = 6 $" }
+					</div>
+
+					<span class="step-title">Step 1. 핵심 관계식 파악</span>
+					<p>두 분모의 관계를 파악합니다.</p>
+					<div style="background: #fff9c4; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center; font-size: 1.1rem;">
+						{ "$ x - 4 = (\\sqrt{x}-2)(\\sqrt{x}+2) $" }
+					</div>
+					<p>따라서 { "$ \\frac{f(x)}{x-4} $" }와 { "$ \\frac{f(x)}{\\sqrt{x}-2} $" }의 관계를 정리합니다.</p>
+
+					<span class="step-title">Step 2. 분모 변환으로 극한 연결</span>
+					<div class="formula-display">
+						{ "$ \\displaystyle \\frac{f(x)}{x-4} = \\frac{f(x)}{(\\sqrt{x}-2)(\\sqrt{x}+2)} = \\frac{f(x)}{\\sqrt{x}-2} \\cdot \\frac{1}{\\sqrt{x}+2} $" }
+					</div>
+					<p>극한을 취하면:</p>
+					<div class="formula-display">
+						{ "$ \\displaystyle \\lim_{x \\to 4} \\frac{f(x)}{x-4} = \\lim_{x \\to 4} \\frac{f(x)}{\\sqrt{x}-2} \\cdot \\lim_{x \\to 4} \\frac{1}{\\sqrt{x}+2} $" }
+					</div>
+
+					<span class="step-title">Step 3. 최종 계산</span>
+					<div style="font-size: 1.2rem; background: #e8f5e9; padding: 15px; border-radius: 10px; text-align: center; margin-top: 10px;">
+						{ "$ 6 \\times \\dfrac{1}{\\sqrt{4}+2} = 6 \\times \\dfrac{1}{4} = \\mathbf{\\dfrac{3}{2}} $" }
+					</div>
+					<p style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;">정답은 { "$ \\mathbf{\\dfrac{3}{2}} $" }입니다.</p>
+				</div>
+
+				<div style="text-align: center; margin-top: 30px;">
+					<a href="/wiki/chapter01/levels/type05-high/" style="background: #333; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none;">← 문제로 돌아가기</a>
+				</div>
+			</section>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>
