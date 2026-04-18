@@ -23,45 +23,52 @@ import CornellNote from '../../../../components/CornellNote.astro';
 			<div slot="cues">
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 수능적 접근</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 10pt; line-height: 1.6; color: #666;">
-					<li>{ "$ x^2 - a^2 = (x-a)(x+a) $" }임을 이용하여 식을 분리합니다.</li>
-					<li>모든 실수 { "$ a $" }에 대하여 성립한다는 조건은 항등식임을 의미합니다.</li>
+					<li>(나)의 무한대 극한으로 <b>차수와 계수</b>를 먼저 결정합니다.</li>
+					<li>(가)의 { "$ x^2-1 = (x-1)(x+1) $" } 분해가 핵심입니다.</li>
+					<li>분모가 { "$ 0 $" }이 될 때 분자도 반드시 { "$ 0 $" }임을 활용합니다.</li>
 				</ul>
 			</div>
 
 			<section>
 				<div class="sol-box">
-					<p style="margin-bottom: 20px; font-weight: bold;">Q3. 다항함수 { "$ f(x) $" }가 모든 실수 { "$ a $" }에 대하여 다음 조건을 만족시킨다. { "$ f(1)=10 $" }일 때, { "$ f(2) $" }의 값을 구하시오.</p>
+					<p style="margin-bottom: 15px; font-weight: bold;">Q3. 다항함수 { "$ f(x) $" }가 다음 두 조건을 만족시킬 때, { "$ f(0) $" }의 값을 구하시오.</p>
 					<div class="formula-display">
-						{ "$ \\displaystyle \\lim_{x \\to a} \\frac{f(x)-f(a)}{x^2-a^2} = 1 $" }
+						<p style="margin: 0 0 8px 0;">(가) { "$ \\displaystyle \\lim_{x \\to 1} \\frac{f(x)}{x^2-1} = 2 $" }</p>
+						<p style="margin: 0;">(나) { "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{f(x)}{x^2} = 2 $" }</p>
 					</div>
 
-					<span class="step-title">Step 1. 극한 식의 구조 해석</span>
-					<p>분모를 인수분해하여 극한 식을 정리합니다.</p>
-					<div class="formula-display">
-						{ "$ \\displaystyle \\lim_{x \\to a} \\frac{f(x)-f(a)}{(x-a)(x+a)} = \\lim_{x \\to a} \\left[ \\frac{f(x)-f(a)}{x-a} \\cdot \\frac{1}{x+a} \\right] = 1 $" }
-					</div>
-					<p>{ "$ \\displaystyle \\lim_{x \\to a} \\frac{f(x)-f(a)}{x-a} = f'(a) $" } (미분계수의 정의)이므로,</p>
+					<span class="step-title">Step 1. (나)로 차수와 최고차항 계수 결정</span>
+					<p>{ "$ x \\to \\infty $" }일 때 극한값이 { "$ 2 $" }로 존재하므로, { "$ f(x) $" }는 <b>이차함수</b>이며 최고차항 계수가 { "$ 2 $" }입니다.</p>
 					<div style="background: #fff9c4; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center; font-size: 1.1rem;">
-						{ "$ f'(a) \\cdot \\frac{1}{2a} = 1 \\implies f'(a) = 2a $" }
+						{ "$ f(x) = 2x^2 + px + q $" } (형태 설정)
 					</div>
 
-					<span class="step-title">Step 2. 도함수에서 원래 함수 도출</span>
-					<p>모든 실수 { "$ a $" }에 대하여 { "$ f'(a) = 2a $" }이므로 { "$ f'(x) = 2x $" } 입니다.</p>
-					<p>이를 역으로 계산하면:</p>
-					<div style="font-size: 1.1rem; background: #f0f4f8; padding: 15px; border-radius: 10px; margin: 10px 0; text-align: center;">
-						{ "$ f(x) = x^2 + C $" }  (단, { "$ C $" }는 상수)
+					<span class="step-title">Step 2. (가)에서 인수와 계수 결정</span>
+					<p>분모를 인수분해하면 { "$ x^2-1 = (x-1)(x+1) $" }입니다.</p>
+					<p>{ "$ x \\to 1 $" }일 때 분모 { "$ (x-1)(x+1) \\to 0 $" }이므로, 극한이 존재하려면 분자도 반드시 { "$ 0 $" }이어야 합니다.</p>
+					<div style="background: #f0f4f8; padding: 15px; border-radius: 8px; margin: 15px 0;">
+						{ "$ f(1) = 0 $" } 이므로 { "$ f(x) $" }는 { "$ (x-1) $" }을 인수로 가집니다.<br/>
+						{ "$ f(x) = 2x^2 + px + q = (x-1)(2x+r) $" } 로 쓸 수 있습니다.
 					</div>
-
-					<span class="step-title">Step 3. 상수 결정 및 최종 계산</span>
-					<p>{ "$ f(1)=10 $" } 조건을 이용합니다.</p>
+					<p>전개하면 { "$ (x-1)(2x+r) = 2x^2 + (r-2)x - r $" } 이므로:</p>
 					<div class="formula-display">
-						{ "$ f(1) = 1 + C = 10 \\implies \\mathbf{C = 9} $" }
+						{ "$ p = r-2, \\quad q = -r $" }
 					</div>
-					<p>따라서 { "$ f(x) = x^2 + 9 $" } 이며,</p>
+					<p>이제 (가)의 극한값에 대입합니다.</p>
+					<div class="formula-display">
+						{ "$ \\displaystyle \\lim_{x \\to 1} \\frac{(x-1)(2x+r)}{(x-1)(x+1)} = \\lim_{x \\to 1} \\frac{2x+r}{x+1} = \\frac{2+r}{2} = 2 $" }
+					</div>
+					<p>따라서 { "$ 2+r = 4 \\implies \\mathbf{r = 2} $" }</p>
+
+					<span class="step-title">Step 3. { "$ f(x) $" } 완성 및 { "$ f(0) $" } 계산</span>
+					<div class="formula-display">
+						{ "$ f(x) = (x-1)(2x+2) = 2(x-1)(x+1) = 2x^2 - 2 $" }
+					</div>
+					<p>{ "$ x=0 $" }을 대입합니다.</p>
 					<div style="font-size: 1.2rem; background: #e8f5e9; padding: 15px; border-radius: 10px; text-align: center; margin-top: 10px;">
-						{ "$ f(2) = 4 + 9 = \\mathbf{13} $" }
+						{ "$ f(0) = 2(0)^2 - 2 = \\mathbf{-2} $" }
 					</div>
-					<p style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;">정답은 { "$ \\mathbf{13} $" }입니다.</p>
+					<p style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;">정답은 { "$ \\mathbf{-2} $" }입니다.</p>
 				</div>
 
 				<div style="text-align: center; margin-top: 30px;">
