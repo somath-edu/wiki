@@ -1,0 +1,100 @@
+---
+import CornellNote from '../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 05 - 난이도 [중] 연습</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body { background-color: #e0e0e0; margin: 0; padding: 20px; display: flex; justify-content: center; }
+			.sol-button {
+				display: inline-block; padding: 4px 12px; background: #fff8e1; color: #f57f17;
+				border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: bold;
+				margin-left: 10px; border: 1.5px solid #f57f17; transition: all 0.2s ease;
+				white-space: nowrap;
+			}
+			.sol-button:hover { background: #f57f17; color: white; transform: translateY(-1px); }
+			.question-card { background: white; padding: 25px; border-radius: 16px; margin-bottom: 20px; border: 1px solid #eee; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+			.question-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; gap: 10px; }
+			.formula-box { background: #fafafa; padding: 25px; border-radius: 12px; font-size: 1.3rem; text-align: center; }
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 05. 무리식 극한 [중]" chapter="Level: Mid">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🟠 [중] 핵심 포인트</p>
+				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
+					<li>분모에 루트가 있으면 <b>분모를 유리화</b>합니다.</li>
+					<li>분자·분모 둘 다 루트면 <b>각각 켤레식</b>을 곱해봅니다.</li>
+					<li>유리화 후 반드시 <b>영인자 약분</b>을 확인하세요.</li>
+				</ul>
+			</div>
+
+			<section>
+				<div class="type-section">
+					<p style="margin-bottom: 25px; color: #666;">분모 유리화 또는 분자·분모 동시 유리화가 필요한 심화 단계입니다.</p>
+
+					<!-- Q1 -->
+					<div class="question-card">
+						<div class="question-header">
+							<p style="margin: 0;"><b>Q1.</b> 다음 극한값을 구하시오.</p>
+							<a href="/wiki/chapter01/solutions/type05-mid/q1" class="sol-button">풀이 💡</a>
+						</div>
+						<div class="formula-box">
+							{ "$ \\displaystyle \\lim_{x \\to 3} \\frac{x-3}{\\sqrt{x+1}-2} $" }
+						</div>
+					</div>
+
+					<!-- Q2 -->
+					<div class="question-card">
+						<div class="question-header">
+							<p style="margin: 0;"><b>Q2.</b> 다음 극한값을 구하시오.</p>
+							<a href="/wiki/chapter01/solutions/type05-mid/q2" class="sol-button">풀이 💡</a>
+						</div>
+						<div class="formula-box">
+							{ "$ \\displaystyle \\lim_{x \\to 0} \\frac{\\sqrt{x+4}-\\sqrt{4-x}}{x} $" }
+						</div>
+					</div>
+
+					<!-- Q3 -->
+					<div class="question-card">
+						<div class="question-header">
+							<p style="margin: 0;"><b>Q3.</b> 다음 극한값을 구하시오.</p>
+							<a href="/wiki/chapter01/solutions/type05-mid/q3" class="sol-button">풀이 💡</a>
+						</div>
+						<div class="formula-box">
+							{ "$ \\displaystyle \\lim_{x \\to 1} \\frac{\\sqrt{x+3}-2}{\\sqrt{x+8}-3} $" }
+						</div>
+					</div>
+				</div>
+
+				<div style="margin-top: 40px; display: flex; gap: 15px;">
+					<a href="/wiki/chapter01/types/type05/" style="color: #666; text-decoration: none;">← 핵심 문제로 이동</a>
+					<a href="/wiki/chapter01/problems-const/" style="color: #666; text-decoration: none;">목록으로 돌아가기</a>
+				</div>
+			</section>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>
