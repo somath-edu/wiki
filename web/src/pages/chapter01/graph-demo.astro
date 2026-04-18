@@ -48,8 +48,15 @@ import JSXGraph from '../../components/JSXGraph.astro';
 					boundingbox: [-2, 6, 4, -1],
 					axis: true,
 					showCopyright: false,
+					keepaspectratio: false,
+					showNavigation: true,
 					pan: { enabled: true },
 					zoom: { enabled: true }
+				});
+
+				// Auto-resize trigger
+				window.addEventListener('resize', () => {
+					board.resizeContainer(board.containerObj.clientWidth, board.containerObj.clientHeight);
 				});
 
 				// f(x) = x + 2 (but undefined at x=1)
