@@ -1,0 +1,88 @@
+---
+import CornellNote from '../../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 04 [중] - Q3 상세 해설</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body { background-color: #e0e0e0; margin: 0; padding: 10px; display: flex; justify-content: center; }
+			.sol-box { background: white; padding: 10px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+			.step-title { display: block; font-weight: bold; color: #1a73e8; margin: 25px 0 10px 0; font-size: 1.1rem; border-left: 4px solid #1a73e8; padding-left: 10px; }
+			.formula-display { text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 15px; border-radius: 12px; margin: 15px 0; }
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 04 [중] Q3 상세 해설" chapter="Solution">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 풀이 전략</p>
+				<ul style="margin-top: 10px; padding-left: 18px; font-size: 10pt; line-height: 1.6; color: #666;">
+					<li>삼차식의 인수분해를 위해 <b>조립제법</b>을 활용합니다.</li>
+					<li>분모가 { "$ x-2 $" }이므로 분자에서 반드시 { "$ x-2 $" }가 약분됨을 전제로 합니다.</li>
+				</ul>
+			</div>
+
+			<section>
+				<div class="sol-box formula-box">
+					<p style="margin-bottom: 20px; font-weight: bold;">Q3. 다음 극한값을 구하시오.</p>
+					<div class="formula-display">
+						{ "$ \\displaystyle \\lim_{x \\to 2} \\frac{x^3 - 2x^2 + x - 2}{x - 2} $" }
+					</div>
+
+					<span class="step-title">Step 1. 영인자 분석</span>
+					<p>{ "$ x = 2 $" }를 대입하면 분모는 { "$ 0 $" }, 분자는 { "$ 8 - 8 + 2 - 2 = 0 $" }으로 { "$ \\frac{0}{0} $" } 꼴입니다. 즉, 분자는 { "$ (x-2) $" }를 인수로 가집니다.</p>
+
+					<span class="step-title">Step 2. 조립제법을 통한 인수분해</span>
+					<p>분자의 계수 { "$ 1, -2, 1, -2 $" }에 대하여 조립제법을 실시합니다.</p>
+					<div style="font-family: monospace; background: #f0f4f8; padding: 15px; border-radius: 8px; margin: 15px 0; line-height: 1.2;">
+						2 |  1  -2   1  -2 <br/>
+						  |      2   0   2 <br/>
+						  -------------<br/>
+						     1   0   1 | 0
+					</div>
+					<p>결과에 따라 분자는 다음과 같이 인수분해됩니다.</p>
+					<div class="formula-display">
+						{ "$ x^3 - 2x^2 + x - 2 = (x-2)(x^2 + 1) $" }
+					</div>
+
+					<span class="step-title">Step 3. 극한값 도출</span>
+					<div class="formula-display">
+						{ "$ \\displaystyle \\lim_{x \\to 2} \\frac{(x-2)(x^2 + 1)}{x-2} = \\lim_{x \\to 2} (x^2 + 1) $" }
+					</div>
+					<p>{ "$ x = 2 $" }를 대입하면:</p>
+					<div style="font-size: 1.2rem; background: #e8f5e9; padding: 15px; border-radius: 10px; text-align: center; margin-top: 10px;">
+						{ "$ 2^2 + 1 = 4 + 1 = \\mathbf{5} $" }
+					</div>
+					<p style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;">정답은 { "$ \mathbf{5} $" }입니다.</p>
+				</div>
+
+				<div style="text-align: center; margin-top: 30px;">
+					<a href="/wiki/chapter01/levels/type04-mid/" class="problem-link mobile-nav-btn" style="background: #333; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none;">← 문제로 돌아가기</a>
+				</div>
+			</section>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

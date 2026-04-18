@@ -1,0 +1,79 @@
+---
+import CornellNote from '../../../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 04 [중] - Q2 상세 해설</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body { background-color: #e0e0e0; margin: 0; padding: 10px; display: flex; justify-content: center; }
+			.sol-box { background: white; padding: 10px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+			.step-title { display: block; font-weight: bold; color: #1a73e8; margin: 25px 0 10px 0; font-size: 1.1rem; border-left: 4px solid #1a73e8; padding-left: 10px; }
+			.formula-display { text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 15px; border-radius: 12px; margin: 15px 0; }
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 04 [중] Q2 상세 해설" chapter="Solution">
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 풀이 전략</p>
+				<ul style="margin-top: 10px; padding-left: 18px; font-size: 10pt; line-height: 1.6; color: #666;">
+					<li>세제급 합 공식 { "$ a^3 + b^3 = (a+b)(a^2-ab+b^2) $" }을 이용합니다.</li>
+					<li>{ "$ x \\to -2 $" }에서 분모를 { "$ 0 $" }으로 만드는 { "$ (x+2) $" }를 약분합니다.</li>
+				</ul>
+			</div>
+
+			<section>
+				<div class="sol-box formula-box">
+					<p style="margin-bottom: 20px; font-weight: bold;">Q2. 다음 극한값을 구하시오.</p>
+					<div class="formula-display">
+						{ "$ \\displaystyle \\lim_{x \\to -2} \\frac{x^3 + 8}{x^2 - 4} $" }
+					</div>
+
+					<span class="step-title">Step 1. 영인자 분석</span>
+					<p>{ "$ x = -2 $" }일 때 분모와 분자가 모두 { "$ 0 $" }이 됩니다. 따라서 분모와 분자 모두 반드시 { "$ (x+2) $" }를 인수로 가집니다.</p>
+
+					<span class="step-title">Step 2. 인수분해 적용</span>
+					<p><b>분자:</b> { "$ x^3 + 2^3 = (x+2)(x^2 - 2x + 4) $" } <br/>
+					<b>분모:</b> { "$ x^2 - 2^2 = (x+2)(x-2) $" }</p>
+					<div class="formula-display">
+						{ "$ \\displaystyle \\frac{(x+2)(x^2 - 2x + 4)}{(x+2)(x-2)} = \\frac{x^2 - 2x + 4}{x-2} $" }
+					</div>
+
+					<span class="step-title">Step 3. 최종 계산</span>
+					<p>남은 식에 { "$ x=-2 $" }를 대입합니다.</p>
+					<div style="font-size: 1.2rem; background: #e8f5e9; padding: 15px; border-radius: 10px; text-align: center; margin-top: 10px;">
+						{ "$ \\displaystyle \\frac{(-2)^2 - 2(-2) + 4}{-2 - 2} = \\frac{4 + 4 + 4}{-4} = \\frac{12}{-4} = \\mathbf{-3} $" }
+					</div>
+					<p style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;">정답은 { "$ \mathbf{-3} $" }입니다.</p>
+				</div>
+
+				<div style="text-align: center; margin-top: 30px;">
+					<a href="/wiki/chapter01/levels/type04-mid/" class="problem-link mobile-nav-btn" style="background: #333; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none;">← 문제로 돌아가기</a>
+				</div>
+			</section>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>
