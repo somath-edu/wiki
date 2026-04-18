@@ -1,0 +1,97 @@
+---
+import CornellNote from '../../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>미적분 I - 함수의 연속</title>
+		<!-- KaTeX for Math (Safe CDN) -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body {
+				background-color: #e0e0e0;
+				margin: 0;
+				padding: 20px;
+				display: flex;
+				justify-content: center;
+			}
+		</style>
+	</head>
+	<body>
+		<CornellNote title="함수의 연속" chapter="Chapter 01: 함수의 연속">
+			
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold;">Q2. '연속'이라는 말을 수학적으로 어떻게 해석하나요?</p>
+				<p style="margin-top: var(--base-grid); color: #666; font-size: 11pt; line-height: 1.4;">
+					* 극한값과 함숫값이<br/>빈틈없이 채워져야 합니다.
+				</p>
+			</div>
+
+			<section>
+				<p style="margin: 0 0 var(--base-grid) 0; font-weight: 500;">
+					"함수의 연속 문제를 해결할 때는 다음의 <b>두 가지 흐름</b>을 파악하는 것이 핵심입니다."
+				</p>
+
+				<!-- Flow 01 -->
+				<div style="margin-bottom: 40px;">
+					<h4 class="cornell-header-flex" style="align-items: center; gap: 10px; margin-bottom: 10px;">
+						<div style="display: flex; align-items: baseline; gap: 10px;">
+							<span class="pencil-star">★</span>
+							<span class="pencil-underline" style="font-size: 1.3rem;">
+								1. 한 점에서의 연속 (정의 활용)
+							</span>
+						</div>
+					</h4>
+					<p style="margin-left: 25px; margin-top: 5px;">함수 { "$ f(x) $" }가 { "$ x=a $" }에서 연속이기 위한 조건입니다.</p>
+					<ul style="margin-left: 25px;">
+						<li><b>조건 1</b>: 함숫값 { "$ f(a) $" }가 존재해야 합니다.</li>
+						<li><b>조건 2</b>: 극한값 { "$ \\displaystyle \\lim_{x \\to a} f(x) $" }이 존재해야 합니다. (좌극한 = 우극한)</li>
+						<li><b>조건 3</b>: 위 두 값이 같아야 합니다. ({ "$ \\displaystyle \\lim_{x \\to a} f(x) = f(a) $" })</li>
+					</ul>
+				</div>
+
+				<!-- Flow 02 -->
+				<div style="margin-bottom: 40px;">
+					<h4 class="cornell-header-flex" style="align-items: center; gap: 10px; margin-bottom: 10px;">
+						<div style="display: flex; align-items: baseline; gap: 10px;">
+							<span class="pencil-star">★</span>
+							<span class="pencil-underline" style="font-size: 1.3rem;">
+								2. 구간별 함수와 그래프 연결
+							</span>
+						</div>
+					</h4>
+					<p style="margin-left: 25px; margin-top: 5px;">경계 지점에서 식의 형태가 변할 때 그래프가 이어지도록 합니다.</p>
+					<ul style="margin-left: 25px;">
+						<li><b>경계에서의 함숫값 일치</b>: 각 식이 경계값에서 같은 결과를 내야 합니다.</li>
+						<li><b>끊어진 부분 채우기</b>: 수식에서는 미지수를 결정하고, 그래프에서는 펜을 떼지 않고 그릴 수 있는지 확인합니다.</li>
+					</ul>
+				</div>
+			</section>
+
+			<div slot="summary">
+				<p>연속은 <b>'극한값이 함숫값으로 채워진 상태'</b>입니다. 수식으로는 '좌극한=우극한=함숫값'을 확인하고, 그래프로는 '끊어짐 없음'을 직관적으로 이해하는 것이 핵심입니다.</p>
+			</div>
+		</CornellNote>
+		
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>
