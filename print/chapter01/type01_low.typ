@@ -10,7 +10,7 @@
 ]
 
 #v(1fr) // 충분한 풀이 공간 확보
-#pagebreak() // 다음 페이지로 이동 (한 페이지에 2문제씩 배치하기 위해 수동 조정)
+#colbreak() // 다음 단(페이지)로 이동 (한 페이지에 2문제씩 배치하기 위해 수동 조정)
 
 #prob(score: 2)[
   다음 극한값을 구하시오.
@@ -18,7 +18,7 @@
 ]
 
 #v(1fr)
-#pagebreak()
+#colbreak()
 
 #prob(score: 3)[
   다음 극한값을 구하시오.
@@ -26,7 +26,7 @@
 ]
 
 #v(1fr)
-#pagebreak()
+#colbreak()
 
 #prob(score: 3)[
   다음 극한값을 구하시오.
@@ -34,7 +34,7 @@
 ]
 
 #v(1fr)
-#pagebreak()
+#colbreak()
 
 #prob(score: 3)[
   다음 극한값을 구하시오.
@@ -42,7 +42,7 @@
 ]
 
 #v(1fr)
-#pagebreak()
+#colbreak()
 
 #prob(score: 3)[
   다음 극한값을 구하시오.
@@ -50,7 +50,7 @@
 ]
 
 #v(1fr)
-#pagebreak()
+#colbreak()
 
 #prob(score: 3)[
   다음 극한값을 구하시오.
@@ -58,7 +58,7 @@
 ]
 
 #v(1fr)
-#pagebreak()
+#colbreak()
 
 #prob(score: 4)[
   다음 극한값을 구하시오.
@@ -66,7 +66,7 @@
 ]
 
 #v(1fr)
-#pagebreak()
+#colbreak()
 
 #prob(score: 4)[
   다음 극한값을 구하시오.
@@ -74,7 +74,7 @@
 ]
 
 #v(1fr)
-#pagebreak()
+#colbreak()
 
 #prob(score: 4)[
   다음 극한값을 구하시오.
