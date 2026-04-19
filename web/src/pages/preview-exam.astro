@@ -1,0 +1,204 @@
+---
+import CornellNote from '../components/CornellNote.astro';
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>수능 문제지 인쇄 시뮬레이션</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;700&display=swap');
+
+			body {
+				background-color: #525659; /* PDF 뷰어 배경색 */
+				margin: 0;
+				padding: 40px 20px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				font-family: 'Noto Serif KR', serif;
+			}
+
+			/* A4 용지 스타일 */
+			.a4-page {
+				background: white;
+				width: 210mm;
+				height: 297mm;
+				padding: 20mm;
+				box-shadow: 0 0 20px rgba(0,0,0,0.3);
+				box-sizing: border-box;
+				position: relative;
+				overflow: hidden;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.exam-header {
+				text-align: center;
+				margin-bottom: 20px;
+			}
+
+			.exam-title {
+				font-size: 20pt;
+				font-weight: 700;
+				margin: 0;
+			}
+
+			.exam-subtitle {
+				font-size: 16pt;
+				font-weight: 700;
+				margin: 5px 0 15px 0;
+			}
+
+			.info-box {
+				border: 1px solid black;
+				padding: 10px;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				font-size: 11pt;
+				margin-bottom: 25px;
+			}
+
+			/* 2단 구성 */
+			.exam-content {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				column-gap: 40px;
+				flex-grow: 1;
+				position: relative;
+			}
+
+			/* 중앙 구분선 */
+			.exam-content::after {
+				content: '';
+				position: absolute;
+				left: 50%;
+				top: 0;
+				bottom: 0;
+				width: 1px;
+				background: #eee;
+			}
+
+			.problem {
+				margin-bottom: 30px;
+				line-height: 1.6;
+				font-size: 10.5pt;
+				position: relative;
+			}
+
+			.prob-num {
+				font-weight: 700;
+				margin-right: 5px;
+			}
+
+			.score {
+				font-size: 9pt;
+				font-style: italic;
+				float: right;
+				margin-top: 2px;
+			}
+
+			.formula-display {
+				text-align: center;
+				margin: 15px 0;
+				font-size: 1.1em;
+			}
+
+			.footer {
+				text-align: center;
+				font-size: 10pt;
+				margin-top: 20px;
+				border-top: 1px solid #eee;
+				padding-top: 10px;
+			}
+
+			.back-link {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				background: #c62828;
+				color: white;
+				padding: 12px 24px;
+				border-radius: 30px;
+				text-decoration: none;
+				font-weight: bold;
+				box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+				z-index: 100;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="a4-page">
+			<div class="exam-header">
+				<p class="exam-title">2027학년도 대학수학능력시험 대비 핵심 문제집</p>
+				<p class="exam-subtitle">수학 영역 (미적분 I)</p>
+			</div>
+
+			<div class="info-box">
+				<div><b>단위 단원:</b> 01. 함수의 극한과 연속</div>
+				<div style="text-align: right;"><b>성명:</b> ____________________</div>
+			</div>
+
+			<div class="exam-content">
+				<!-- Left Column -->
+				<div class="col">
+					<div class="problem">
+						<span class="prob-num">1.</span>
+						상수 { "$ a $" }에 대하여 다음이 성립할 때, { "$ a $" }의 값을 구하시오. <span class="score">(3점)</span>
+						<div class="formula-display">
+							{ "$ \\displaystyle \\lim_{x \\to 0} \\frac{\\sqrt{1+ax}-1}{x} = 2 $" }
+						</div>
+					</div>
+
+					<div class="problem">
+						<span class="prob-num">2.</span>
+						다항함수 { "$ f(x) $" }에 대하여 { "$ f(4)=0 $" }이고 다음이 성립할 때, { "$ \\displaystyle \\lim_{x \\to 4} \\frac{f(x)}{x-4} $" }의 값을 구하시오. <span class="score">(4점)</span>
+						<div class="formula-display">
+							{ "$ \\displaystyle \\lim_{x \\to 4} \\frac{f(x)}{\\sqrt{x}-2} = 6 $" }
+						</div>
+					</div>
+				</div>
+
+				<!-- Right Column -->
+				<div class="col">
+					<div class="problem" style="height: 150px;">
+						<span class="prob-num">3.</span>
+						두 상수 { "$ a, b $" }에 대하여 다음이 성립할 때, { "$ a + b $" }의 값을 구하시오. <span class="score">(4점)</span>
+						<div class="formula-display">
+							{ "$ \\displaystyle \\lim_{x \\to 1} \\frac{\\sqrt{ax+b}-2}{x-1} = 3 $" }
+						</div>
+					</div>
+
+					<p style="color: #ccc; font-style: italic; text-align: center; margin-top: 50px;">(여백)</p>
+				</div>
+			</div>
+
+			<div class="footer">
+				제 1 단원 - 함수의 극한과 연속
+			</div>
+		</div>
+
+		<a href="/wiki/" class="back-link">← 목차로 돌아가기</a>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>
