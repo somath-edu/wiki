@@ -28,6 +28,15 @@ jobs:
         run: npm install
         working-directory: web
 
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v3
+
+      - name: Create PDF directory
+        run: mkdir -p web/public/pdf/chapter01
+
+      - name: Compile Typst to PDF
+        run: typst compile print/chapter01/type01_low.typ web/public/pdf/chapter01/type01_low.pdf
+
       - name: Build Astro
         run: npm run build
         working-directory: web
