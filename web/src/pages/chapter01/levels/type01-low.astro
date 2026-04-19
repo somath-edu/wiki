@@ -88,9 +88,21 @@ import CornellNote from '../../../components/CornellNote.astro';
 					</div>
 				</div>
 
-				<div style="margin-top: 40px; display: flex; flex-wrap: wrap; gap: 15px;">
-					<a href="/wiki/chapter01/types/type01/" class="problem-link" style="margin: 0;">← 핵심 문제로 이동</a>
-					<a href="/wiki/chapter01/problems-inf/" class="problem-link" style="margin: 0; background-color: rgba(0,0,0,0.05); color: #666;">목록으로 돌아가기</a>
+				<!-- PDF Download & Navigation -->
+				<div style="margin-top: 50px; padding: 25px; background: #fff; border: 1.5px solid #eee; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+					<p style="margin: 0 0 15px 0; font-weight: bold; color: #333; display: flex; align-items: center; gap: 8px;">
+						📄 추가 연습 자료
+					</p>
+					<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+						<a href="/wiki/pdf/chapter01/type01_low.pdf" download class="problem-link" style="margin: 0; background-color: #c62828; color: white; border: none;">
+							유형 01 연습 문제지(10문항) PDF 다운로드
+						</a>
+						<a href="/wiki/chapter01/types/type01/" class="problem-link" style="margin: 0; background: #f8f9fa;">← 핵심 문제로 이동</a>
+						<a href="/wiki/chapter01/problems-inf/" class="problem-link" style="margin: 0; background: #f8f9fa; color: #666;">목록으로 돌아가기</a>
+					</div>
+					<p style="margin-top: 12px; font-size: 9pt; color: #888;">
+						* A4 사이즈 5페이지 분량 (페이지당 2문항씩 넉넉한 풀이 공간 확보)
+					</p>
 				</div>
 			</section>
 		</CornellNote>
