@@ -33,10 +33,16 @@ jobs:
         uses: typst-community/setup-typst@v3
 
       - name: Prep PDF Directory
-        run: mkdir -p web/public/pdf/chapter01
+        run: |
+          mkdir -p web/public/pdf/chapter01
+          ls -R print  # 파일 구조 확인용 로그
 
       - name: Compile PDF (Type 01 Low)
-        run: typst compile --root . print/chapter01/type01_low.typ web/public/pdf/chapter01/type01_low.pdf
+        run: |
+          typst compile --root . print/chapter01/type01_low.typ web/public/pdf/chapter01/type01_low.pdf || (echo "Typst Compile Failed!" && exit 1)
+
+      - name: Verify PDF Creation
+        run: ls -l web/public/pdf/chapter01/type01_low.pdf
 
       - name: Build Astro App
         run: |
