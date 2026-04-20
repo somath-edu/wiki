@@ -32,11 +32,5 @@ Essential rules for stable KaTeX rendering within Astro files:
 - **Analog Aesthetics**: EB Garamond typography, cream-colored paper textures (Cornell paper).
 - **Difficulty Colors**: [Low]-Green, [Mid]-Orange, [CSAT]-Red theme application.
 
-## 6. Automatic PDF Publishing (Typst)
-The project automatically converts `.typ` sources into PDFs via GitHub Actions.
-- **Source Path**: `print/[Chapter]/[Filename].typ`
-- **Output Path**: `web/public/pdf/[Chapter]/[Filename].pdf`
-- **New Additions**: Update the `Compile Typst to PDF` step in `.github/workflows/deploy.yml`.
-
-## 7. Mission
-"To refine raw mathematical information into a structured knowledge base and visualize it as a premium-quality digital textbook and high-quality PDF workbooks."
+## 6. Mission
+"To refine raw mathematical information into a structured knowledge base and visualize it as a premium-quality digital textbook."
