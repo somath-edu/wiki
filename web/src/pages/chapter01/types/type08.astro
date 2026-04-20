@@ -1,10 +1,16 @@
 ---
 import CornellNote from '../../../components/CornellNote.astro';
 
+// 모든 수식 및 본문 내 수식 텍스트를 변수로 격리 (Astro 컴파일러 에러 방지)
 const mathMain = "$ f(x) = \\begin{cases} x^2+ax & (x \\ge 2) \\\\ 2x+1 & (x < 2) \\end{cases} $";
 const mathStep1 = "$ \\text{우극한} = f(2) = 2^2 + 2a = 4+2a $";
 const mathStep2 = "$ \\lim_{x \\to 2^-} (2x+1) = 2(2)+1 = 5 $";
 const mathStep3 = "$ 4+2a = 5 \\implies 2a = 1 \\implies a = 1/2 $";
+
+// 본문 텍스트 내 짧은 수식들
+const txtX2 = "$x=2$";
+const txtX_ge_2 = "$x \\ge 2$";
+const txtX_lt_2 = "$x < 2$";
 ---
 
 <html lang="ko">
@@ -33,7 +39,7 @@ const mathStep3 = "$ 4+2a = 5 \\implies 2a = 1 \\implies a = 1/2 $";
 			<div slot="cues">
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
-					<li>경계점 $x=a$에서의 좌우 극한 비교</li>
+					<li>경계점 <span set:html={"$x=a$"}></span>에서의 좌우 극한 비교</li>
 					<li>함숫값이 포함된 구간의 등호 확인</li>
 					<li>'모든 실수' 조건 = '모든 경계' 조건</li>
 				</ul>
@@ -53,7 +59,7 @@ const mathStep3 = "$ 4+2a = 5 \\implies 2a = 1 \\implies a = 1/2 $";
 					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
 						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략 (클릭하여 확인)</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.6;">
-							함수가 모든 실수에서 연속이려면 경계점인 **$x=2$**에서도 연속이어야 합니다. $x=2$에서의 **우극한(및 함숫값)**과 **좌극한**이 같아야 한다는 방정식을 세우세요.
+							함수가 모든 실수에서 연속이려면 경계점인 **<span set:html={txtX2}></span>**에서도 연속이어야 합니다. <span set:html={txtX2}></span>에서의 **우극한(및 함숫값)**과 **좌극한**이 같아야 한다는 방정식을 세우세요.
 						</div>
 					</details>
 
@@ -61,9 +67,9 @@ const mathStep3 = "$ 4+2a = 5 \\implies 2a = 1 \\implies a = 1/2 $";
 					<details style="margin-top: 15px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
 						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이 (마지막에 열어보세요!)</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
-							<p><b>Step 1. 우극한 및 함숫값 계산</b><br/>$x \ge 2$인 식에 $x=2$를 대입합니다.<br/>
+							<p><b>Step 1. 우극한 및 함숫값 계산</b><br/><span set:html={txtX_ge_2}></span>인 식에 <span set:html={txtX2}></span>를 대입합니다.<br/>
 							<span set:html={mathStep1}></span></p>
-							<p><b>Step 2. 좌극한 계산</b><br/>$x < 2$인 식에 $x=2$를 극한값으로 대입합니다.<br/>
+							<p><b>Step 2. 좌극한 계산</b><br/><span set:html={txtX_lt_2}></span>인 식에 <span set:html={txtX2}></span>를 극한값으로 대입합니다.<br/>
 							<span set:html={mathStep2}></span></p>
 							<p><b>Step 3. 결과 결정</b><br/>좌극한과 우극한이 같아야 하므로<br/>
 							<span set:html={mathStep3}></span> 입니다.</p>
@@ -76,15 +82,9 @@ const mathStep3 = "$ 4+2a = 5 \\implies 2a = 1 \\implies a = 1/2 $";
 							🎯 내 실력에 맞는 문제 도전하기
 						</p>
 						<div style="display: flex; gap: 12px;">
-							<a href="/wiki/chapter01/levels/type08-low/" style="flex: 1; padding: 15px; background: #eef7ee; color: #2e7d32; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #2e7d32; font-size: 1.3rem;">
-								[하]
-							</a>
-							<a href="/wiki/chapter01/levels/type08-mid/" style="flex: 1; padding: 15px; background: #ebf3ff; color: #1565c0; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #1565c0; font-size: 1.3rem;">
-								[중]
-							</a>
-							<a href="/wiki/chapter01/levels/type08-high/" style="flex: 1; padding: 15px; background: #fff8e1; color: #a0522d; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #a0522d; font-size: 1.3rem;">
-								[수능]
-							</a>
+							<a href="/wiki/chapter01/levels/type08-low/" style="flex: 1; padding: 15px; background: #eef7ee; color: #2e7d32; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #2e7d32; font-size: 1.3rem;">[하]</a>
+							<a href="/wiki/chapter01/levels/type08-mid/" style="flex: 1; padding: 15px; background: #ebf3ff; color: #1565c0; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #1565c0; font-size: 1.3rem;">[중]</a>
+							<a href="/wiki/chapter01/levels/type08-high/" style="flex: 1; padding: 15px; background: #fff8e1; color: #a0522d; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #a0522d; font-size: 1.3rem;">[수능]</a>
 						</div>
 					</div>
 				</div>

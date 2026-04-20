@@ -1,7 +1,7 @@
 #import "templates/exam_layout.typ": exam_layout, prob
 
 #show: exam_layout.with(
-  chapter: "01. 함수의 극한과 연속 (유형 05. 무리식 극한)",
+  title: "01. 함수의 극한과 연속 (유형 05. 무리식 극한)",
 )
 
 #prob(score: 3)[

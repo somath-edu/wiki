@@ -32,5 +32,10 @@ Essential rules for stable KaTeX rendering within Astro files:
 - **Analog Aesthetics**: EB Garamond typography, cream-colored paper textures (Cornell paper).
 - **Difficulty Colors**: [Low]-Green, [Mid]-Orange, [CSAT]-Red theme application.
 
-## 6. Mission
+## 6. Worksheet (PDF) Production Principles
+- **Tools**: Use [Typst](https://typst.app/) and [Tinymist](https://github.com/Myriad-Dreamin/tinymist) (VS Code extension) for local design.
+- **Source**: Store `.typ` files in the `/print` folder.
+- **Deployment**: Upload ONLY the **final PDF files (`web/public/pdf/`)** generated locally to GitHub for user downloads.
+
+## 7. Mission
 "To refine raw mathematical information into a structured knowledge base and visualize it as a premium-quality digital textbook."

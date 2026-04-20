@@ -1,5 +1,17 @@
 ---
 import CornellNote from '../../../components/CornellNote.astro';
+
+// 모든 수식을 변수로 격리하여 Astro 컴파일러 에러 방지 및 렌더링 최적화
+const mathMain = "$ f(x) = [x] + [-x] $";
+const mathX1 = "$x=1$";
+const mathUX = "$[x]$";
+const mathX = "$x$";
+const mathLimitR = "$ \\lim_{x \\to 1^+} f(x) = 1 + (-2) = -1 $";
+const mathLimitL = "$ \\lim_{x \\to 1^-} f(x) = 0 + (-1) = -1 $";
+
+// 큐 영역 수식
+const mathN = "$n$";
+const mathN1 = "$n-1$";
 ---
 
 <html lang="ko">
@@ -29,8 +41,8 @@ import CornellNote from '../../../components/CornellNote.astro';
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
 					<li>절댓값 안이 0이 되는 지점 주의</li>
-					<li>가우스 기호는 정수 주변의 우극한($n$)과 좌극한($n-1$) 구분</li>
-					<li>$(좌극한) = (우극한) = (함숫값)$ 삼박자 확인</li>
+					<li>가우스 기호는 정수 주변의 우극한(<span set:html={mathN}></span>)과 좌극한(<span set:html={mathN1}></span>) 구분</li>
+					<li>좌극한 = 우극한 = 함숫값 삼박자 확인</li>
 				</ul>
 			</div>
 
@@ -41,15 +53,15 @@ import CornellNote from '../../../components/CornellNote.astro';
 					</h4>
 					<p>함수의 좌극한과 우극한을 각각 구하여 연속성을 판별하시오.</p>
 					<div style="text-align: center; font-size: 1.6rem; margin: 40px 0; background: rgba(0,0,0,0.02); padding: 30px; border-radius: 12px;">
-						 <span set:html={"$ f(x) = [x] + [ -x ] $"}></span><br/>
-						 가 $x=1$에서 연속인지 판별하시오. (단, $[x]$는 $x$보다 크지 않은 최대 정수)
+						 <span set:html={mathMain}></span><br/>
+						 가 <span set:html={mathX1}></span>에서 연속인지 판별하시오. (단, <span set:html={mathUX}></span>는 <span set:html={mathX}></span>보다 크지 않은 최대 정수)
 					</div>
 					
 					<!-- Strategy -->
 					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
 						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략 (클릭하여 확인)</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.6;">
-							가우스 기호 $[x]$는 $x$가 정수 $n$으로 갈 때 **우극한은 $n$, 좌극한은 $n-1$**이 됩니다. $[ -x ]$의 극한도 동일한 원리로 좌/우를 각각 구해서 더해 보세요.
+							가우스 기호 <span set:html={mathUX}></span>는 <span set:html={mathX}></span>가 정수 <span set:html={mathN}></span>으로 갈 때 **우극한은 <span set:html={mathN}></span>, 좌극한은 <span set:html={mathN1}></span>**이 됩니다. $[ -x ]$의 극한도 동일한 원리로 좌/우를 각각 구해서 더해 보세요.
 						</div>
 					</details>
 
@@ -57,14 +69,12 @@ import CornellNote from '../../../components/CornellNote.astro';
 					<details style="margin-top: 15px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
 						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
-							<p><b>Step 1. 우극한($x \to 1^+$) 구하기</b><br/>
-							$x \to 1^+$일 때 $[x] = 1$이고, $-x \to -1^-$ 이므로 $[-x] = -2$입니다.<br/>
-							따라서 <span set:html={"$ \\lim_{x \\to 1^+} f(x) = 1 + (-2) = -1 $"}></span> 입니다.</p>
-							<p><b>Step 2. 좌극한($x \to 1^-$) 구하기</b><br/>
-							$x \to 1^-$일 때 $[x] = 0$이고, $-x \to -1^+$ 이므로 $[-x] = -1$입니다.<br/>
-							따라서 <span set:html={"$ \\lim_{x \\to 1^-} f(x) = 0 + (-1) = -1 $"}></span> 입니다.</p>
+							<p><b>Step 1. 우극한 구하기</b><br/>
+							<span set:html={mathLimitR}></span> 입니다.</p>
+							<p><b>Step 2. 좌극한 구하기</b><br/>
+							<span set:html={mathLimitL}></span> 입니다.</p>
 							<p><b>Step 3. 함숫값 확인</b><br/>
-							$f(1) = [1] + [-1] = 1 - 1 = 0$ 입니다.</p>
+							$f(1) = 1 - 1 = 0$ 입니다.</p>
 							<p><b>결론:</b> 좌/우극한은 모두 $-1$로 같지만, 함숫값($0$)과 다르므로 **불연속**입니다.</p>
 						</div>
 					</details>
@@ -89,5 +99,21 @@ import CornellNote from '../../../components/CornellNote.astro';
 				<p>절댓값과 가우스 기호가 포함된 함수의 연속성 상세 연습입니다. 극한의 존재 여부와 함숫값이 일치하는지를 꼼꼼히 따지는 훈련이 필요합니다.</p>
 			</div>
 		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
 	</body>
 </html>
