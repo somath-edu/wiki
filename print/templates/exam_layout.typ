@@ -42,6 +42,9 @@
     lang: "ko"
   )
 
+  // 수식 설정: 모든 연산자(lim, sum 등)의 극한 조건을 항상 상/하단에 배치
+  set math.limits(inline: true)
+
   // 3. 메인 헤더 박스 (1페이지 상단) - 성명 칸 우측 최적화
   block(width: 100%, stroke: 1.2pt + black, inset: 12pt)[
     #align(center)[
