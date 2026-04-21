@@ -9,6 +9,8 @@ const mathFinalEq = "$ g(f(1)) $";
 // 큐 영역 수식
 const mathFX = "$f(x)$";
 const mathGT = "$g(t)$";
+const mathX1 = "$x=1$";
+const mathT2L = "$t \\to 2^-$";
 ---
 
 <html lang="ko">
@@ -28,6 +30,39 @@ const mathGT = "$g(t)$";
 				padding: 20px;
 				display: flex;
 				justify-content: center;
+			}
+			/* [표준 디자인 시스템] KaTeX & 모바일 수식 최적화 */
+			.formula-box {
+				text-align: center;
+				margin: 30px 0;
+				background: #fff;
+				padding: 30px;
+				border-radius: 12px;
+				border: 1px solid #eee;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+				overflow: hidden;
+				width: 100%;
+				box-sizing: border-box;
+			}
+			.math-container {
+				width: 100%;
+				overflow-x: auto;
+				white-space: nowrap;
+				-webkit-overflow-scrolling: touch;
+				padding-bottom: 15px;
+				display: flex;
+				justify-content: center;
+			}
+			.katex-display {
+				margin: 0.5em 0 !important;
+				overflow-x: auto;
+				overflow-y: hidden;
+			}
+			@media screen and (max-width: 480px) {
+				.formula-box { padding: 20px 10px !important; margin: 20px 0 !important; }
+				.katex-display { font-size: 0.85em !important; }
+				.formula-box p { font-size: 1rem !important; line-height: 1.6; }
+				body { padding: 10px; }
 			}
 		</style>
 	</head>
@@ -51,10 +86,17 @@ const mathGT = "$g(t)$";
 					<h4 style="margin-top: 0; color: #1a1a1a; border-bottom: 2px solid royalblue; display: inline-block; padding-bottom: 5px; margin-bottom: 15px;">
 						[핵심 문제]
 					</h4>
-					<p>두 함수의 그래프가 주어질 때, 합성함수의 연속성을 판별하시오.</p>
-					<div style="text-align: center; font-size: 1.6rem; margin: 40px 0; background: rgba(0,0,0,0.02); padding: 30px; border-radius: 12px;">
-						 함수 <span set:html={mathFX}></span>가 $x=1$에서 우극한은 $2$인 상태에서 아래쪽에서 접근하고, <span set:html={mathGT}></span>가 $t \to 2^-$일 때 극한값이 $y$라고 한다면,<br/>
-						 <span set:html={mathOuterLimit}></span> 의 값은?
+					<p>두 함수의 그래프 조건이 주어질 때, 합성함수의 극한값을 구하시오.</p>
+
+					<!-- 가독성 중심으로 개편된 formula-box -->
+					<div class="formula-box">
+						<p style="margin: 0 0 15px 0; color: #444; font-size: 1.05rem; line-height: 1.6; word-break: keep-all;">
+							함수 <span set:html={mathFX}></span>가 <span set:html={mathX1}></span>에서의 우극한이 $2$인 상태에서 아래쪽에서 접근하고, <span set:html={mathGT}></span>가 <span set:html={mathT2L}></span>일 때 극한값이 $y$라면,
+						</p>
+						<div class="math-container" style="background: rgba(0,0,0,0.01); padding: 20px 0; border-radius: 8px; margin: 15px 0;">
+							<span set:html={"$$ \\lim_{x \\to 1^+} g(f(x)) $$"}></span>
+						</div>
+						<p style="margin: 15px 0 0 0; font-weight: bold; font-size: 1.1rem; color: #1a1a1a;">의 값은?</p>
 					</div>
 					
 					<!-- Strategy -->
