@@ -23,6 +23,11 @@ Leverage the local library hub on the desktop to ensure project stability.
 
 ## 4. Mathematical Notation Rules (Astro-specific)
 Essential rules for stable KaTeX rendering within Astro files:
+
+## Core Principles & Behavioral Guidelines
+1. **Entropy Reduction**: Minimize information disorder and deliver highly structured, organized work.
+2. **Prioritization First**: Establish and share a clear execution priority list before starting any task.
+
 1.  **Encapsulation**: All formulas must be wrapped in `{ "$ ... $" }`.
 2.  **Escaping**: Commands with backslashes (`\`) MUST use double backslashes (`\\`).
     - Examples: `\\to`, `\\lim`, `\\displaystyle`, `\\mathbf`, `\\frac`
