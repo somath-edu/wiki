@@ -28,7 +28,7 @@ const mathQ3_Target = "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{ax^n + 3x 
 				display: flex;
 				justify-content: center;
 			}
-			/* [표준 디자인 시스템] 난이도 연습 페이지 v2 */
+			/* [표준 디자인 시스템] 하단 버튼형 연습 페이지 */
 			.question-card {
 				background: #fff;
 				border-radius: 16px;
@@ -36,26 +36,31 @@ const mathQ3_Target = "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{ax^n + 3x 
 				margin-bottom: 30px;
 				border: 1px solid #eee;
 				box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+				display: flex;
+				flex-direction: column;
 			}
 			.question-header {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
 				margin-bottom: 20px;
 			}
 			.pencil-star { color: #e63946; margin-right: 5px; }
 			
+			.sol-container {
+				margin-top: 20px;
+				display: flex;
+				justify-content: flex-end;
+			}
 			.sol-button {
 				display: inline-block;
-				padding: 6px 16px;
+				padding: 8px 20px;
 				background: #fdf2f2;
 				color: #e63946;
-				border-radius: 20px;
+				border-radius: 25px;
 				text-decoration: none;
-				font-size: 0.9rem;
+				font-size: 0.95rem;
 				font-weight: bold;
-				border: 1.2px solid #f9d5d5;
+				border: 1.5px solid #f9d5d5;
 				transition: all 0.2s ease;
+				text-align: center;
 			}
 			.sol-button:hover {
 				background: #e63946;
@@ -82,10 +87,12 @@ const mathQ3_Target = "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{ax^n + 3x 
 			}
 
 			@media screen and (max-width: 480px) {
-				.question-card { padding: 20px 15px !important; }
+				.question-card { padding: 25px 15px !important; }
 				.formula-box { padding: 15px 5px !important; }
 				.katex-display { font-size: 0.85em !important; }
-				.math-container { justify-content: flex-start; } /* 모바일에서 길면 앞에서부터 */
+				.math-container { justify-content: flex-start; }
+				.sol-container { justify-content: center; margin-top: 25px; }
+				.sol-button { width: 80%; padding: 12px; } /* 모바일에서는 클릭하기 쉽게 크게 */
 				body { padding: 10px; }
 			}
 		</style>
@@ -108,8 +115,7 @@ const mathQ3_Target = "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{ax^n + 3x 
 					<!-- Q1 -->
 					<div class="question-card">
 						<div class="question-header">
-							<p style="margin: 0; font-size: 1.1rem;"><span class="pencil-star">★</span> <b>Q1.</b> 다항함수 $f(x)$가 다음 조건을 만족시킨다.</p>
-							<a href="/wiki/chapter01/solutions/type01-high/q1" class="sol-button">풀이 보기 💡</a>
+							<p style="margin: 0; font-size: 1.15rem;"><span class="pencil-star">★</span> <b>Q1.</b> 다항함수 $f(x)$가 다음 조건을 만족시킨다.</p>
 						</div>
 						<div class="formula-box">
 							<div class="math-container">
@@ -120,13 +126,16 @@ const mathQ3_Target = "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{ax^n + 3x 
 							</div>
 						</div>
 						<p style="margin-top: 15px;">이때, $f(2)$의 값을 구하시오.</p>
+						
+						<div class="sol-container">
+							<a href="/wiki/chapter01/solutions/type01-high/q1" class="sol-button">풀이 보기 💡</a>
+						</div>
 					</div>
 
 					<!-- Q2 -->
 					<div class="question-card">
 						<div class="question-header">
-							<p style="margin: 0; font-size: 1.1rem;"><span class="pencil-star">★</span> <b>Q2.</b> 두 다항함수 $f(x), g(x)$가 다음을 만족할 때, 극한값 $L$을 구하시오.</p>
-							<a href="/wiki/chapter01/solutions/type01-high/q2" class="sol-button">풀이 보기 💡</a>
+							<p style="margin: 0; font-size: 1.15rem;"><span class="pencil-star">★</span> <b>Q2.</b> 두 다항함수 $f(x), g(x)$가 다음을 만족할 때, 극한값 $L$을 구하시오.</p>
 						</div>
 						<div class="formula-box">
 							<div class="math-container">
@@ -136,18 +145,25 @@ const mathQ3_Target = "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{ax^n + 3x 
 						<div class="math-container" style="margin: 20px 0;">
 							<span set:html={mathQ2_Target}></span>
 						</div>
+						
+						<div class="sol-container">
+							<a href="/wiki/chapter01/solutions/type01-high/q2" class="sol-button">풀이 보기 💡</a>
+						</div>
 					</div>
 
 					<!-- Q3 -->
 					<div class="question-card">
 						<div class="question-header">
-							<p style="margin: 0; font-size: 1.1rem;"><span class="pencil-star">★</span> <b>Q3.</b> 자연수 $n$과 상수 $a$에 대하여 다음 등식이 성립하도록 하는 $a+n$의 값을 구하시오.</p>
-							<a href="/wiki/chapter01/solutions/type01-high/q3" class="sol-button">풀이 보기 💡</a>
+							<p style="margin: 0; font-size: 1.15rem;"><span class="pencil-star">★</span> <b>Q3.</b> 자연수 $n$과 상수 $a$에 대하여 다음 등식이 성립하도록 하는 $a+n$의 값을 구하시오.</p>
 						</div>
 						<div class="formula-box">
 							<div class="math-container">
 								<span set:html={mathQ3_Target}></span>
 							</div>
+						</div>
+						
+						<div class="sol-container">
+							<a href="/wiki/chapter01/solutions/type01-high/q3" class="sol-button">풀이 보기 💡</a>
 						</div>
 					</div>
 				</div>
