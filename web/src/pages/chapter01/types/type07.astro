@@ -1,8 +1,10 @@
 ---
 import CornellNote from '../../../components/CornellNote.astro';
 
-// 모든 수식을 변수로 격리하여 Astro 컴파일러 에러 방지
+// 모든 수식을 변수로 격리하여 Astro 컴파일러 에러 방지 (최우선순위: 엔트로피 감소)
 const mathMain = "$ f(x) = \\begin{cases} \\displaystyle \\frac{x^2+ax+b}{x-2} & (x \\neq 2) \\\\ 5 & (x = 2) \\end{cases} $";
+const mathLimitText = "$ \\displaystyle \\lim_{x \\to 2} f(x) $";
+const mathF2 = "$ f(2) $";
 const mathStep1 = "$ 4 + 2a + b = 0 \\implies b = -2a - 4 $";
 const mathStep2 = "$ \\frac{x^2+ax-2a-4}{x-2} = \\frac{(x-2)(x+a+2)}{x-2} = x+a+2 $";
 const mathStep3 = "$ \\displaystyle \\lim_{x \\to 2} (x+a+2) = 4+a $";
@@ -104,8 +106,8 @@ const mathStep4 = "$ 4+a = 5 \\implies a=1, b=-6 $";
 			<div slot="cues">
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">🚀 해결 전략 체크리스트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
-					<li>함숫값 $f(2)$가 존재하는가?</li>
-					<li>극한값 $\displaystyle\lim_{x\to 2} f(x)$가 존재하는가?</li>
+					<li>함숫값 <span set:html={mathF2}></span>가 존재하는가?</li>
+					<li>극한값 <span set:html={mathLimitText}></span>가 존재하는가?</li>
 					<li>분모가 0이면 분자도 0인가?</li>
 				</ul>
 			</div>
@@ -119,7 +121,7 @@ const mathStep4 = "$ 4+a = 5 \\implies a=1, b=-6 $";
 					
 					<div class="formula-box">
 						<div class="math-container">
-							<span set:html={"$$ f(x) = \\begin{cases} \\displaystyle \\frac{x^2+ax+b}{x-2} & (x \\neq 2) \\\\ 5 & (x = 2) \\end{cases} $$"}></span>
+							<span set:html={mathMain}></span>
 						</div>
 						<p style="margin-top: 10px; color: #333; word-break: keep-all;">가 $x=2$에서 연속일 때, $a, b$의 값은?</p>
 					</div>
