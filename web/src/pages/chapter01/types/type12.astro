@@ -1,0 +1,171 @@
+---
+import CornellNote from '../../../components/CornellNote.astro';
+
+// 모든 수식을 변수로 격리하여 에러 방지 및 렌더링 안정화
+const mathMain = "$ f(x) = \\begin{cases} x+2 & (x < 1) \\\\ x^2-4 & (x \\ge 1) \\end{cases} $";
+const mathGX = "$g(x) = x-a$";
+const mathFXGX = "$f(x)g(x)$";
+const mathX1 = "$x=1$";
+const mathA = "$a$";
+
+// 풀이 과정 수식
+const mathLimitL = "$f(x) \\to 1+2 = 3$";
+const mathLimitR = "$f(x) \\to 1-4 = -3$";
+const mathEq = "$3 \\times g(1) = -3 \\times g(1)$";
+const mathG1 = "$g(1) = 0$";
+const mathAns = "$a = 1$";
+
+// 큐 영역 수식
+const mathFK = "$f(x)$";
+const mathXK = "$x=k$";
+const mathGK = "$g(x)$";
+const mathGK0 = "$g(k)=0$";
+---
+
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>유형 03. 함수의 곱의 연속성 - 상세 연습</title>
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+		<style>
+			body {
+				background-color: #e0e0e0;
+				margin: 0;
+				padding: 20px;
+				display: flex;
+				justify-content: center;
+			}
+			/* [표준 디자인 시스템] KaTeX & 모바일 수식 최적화 */
+			.formula-box {
+				text-align: center;
+				margin: 30px 0;
+				background: #fff;
+				padding: 30px;
+				border-radius: 12px;
+				border: 1px solid #eee;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+				overflow: hidden;
+				width: 100%;
+				box-sizing: border-box;
+			}
+			.math-container {
+				width: 100%;
+				overflow-x: auto;
+				white-space: nowrap;
+				-webkit-overflow-scrolling: touch;
+				padding-bottom: 10px;
+				display: flex;
+				justify-content: center;
+			}
+			.katex-display {
+				margin: 0.5em 0 !important;
+				overflow-x: auto;
+				overflow-y: hidden;
+			}
+			@media screen and (max-width: 480px) {
+				.formula-box { padding: 15px 5px !important; margin: 20px 0 !important; }
+				.katex-display { font-size: 0.85em !important; }
+				.formula-box p { font-size: 1rem !important; line-height: 1.5; }
+				body { padding: 10px; }
+			}
+		</style>
+	</head>
+	<body>
+		<CornellNote title="유형 03. 함수의 곱의 연속성" chapter="Chapter 01 Practice">
+			
+			<div slot="cues">
+				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
+				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
+					<li>불연속인 함수 <span set:html={mathFK}></span>의 불연속점 <span set:html={mathXK}></span>를 확인</li>
+					<li>연속인 함수 <span set:html={mathGK}></span>를 곱해 연속이 되려면 <span set:html={mathGK0}></span>이어야 함</li>
+					<li>좌/우/함숫값 삼박자 비교 원칙 엄수</li>
+				</ul>
+			</div>
+
+			<section>
+				<div class="type-section">
+					<h4 style="margin-top: 0; color: #1a1a1a; border-bottom: 2px solid royalblue; display: inline-block; padding-bottom: 5px; margin-bottom: 15px;">
+						[핵심 문제]
+					</h4>
+					<p>두 함수의 곱이 특정 지점에서 연속이 되도록 하는 미지수를 구하시오.</p>
+
+					<!-- 표준화된 formula-box 레이아웃 -->
+					<div class="formula-box">
+						<div class="math-container">
+							<span set:html={"$$ f(x) = \\begin{cases} x+2 & (x < 1) \\\\ x^2-4 & (x \\ge 1) \\end{cases} $$"}></span>
+						</div>
+						<p style="margin-top: 15px; color: #333; word-break: keep-all;">
+							이고, <span set:html={mathGX}></span>일 때,<br/>
+							<span set:html={mathFXGX}></span>가 <span set:html={mathX1}></span>에서 연속이 되기 위한 <span set:html={mathA}></span>의 값은?
+						</p>
+					</div>
+					
+					<!-- Strategy -->
+					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
+						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략 (클릭하여 확인)</summary>
+						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.6;">
+							함수 <span set:html={mathFK}></span>가 <span set:html={mathX1}></span>에서 불연속(좌극한 3, 우극한 -3)입니다. 이 불연속을 '상쇄'하려면 연속 함수인 <span set:html={mathGK}></span>가 <span set:html={mathX1}></span>에서 **반드시 0**이 되어야 합니다.
+						</div>
+					</details>
+
+					<!-- Solution -->
+					<details style="margin-top: 15px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
+						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이</summary>
+						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
+							<p><b>Step 1. <span set:html={mathFK}></span>의 극한 확인</b><br/>
+							- 좌극한 (<span set:html={"$x \\to 1^-$"}></span>): <span set:html={mathLimitL}></span><br/>
+							- 우극한 (<span set:html={"$x \\to 1^+$"}></span>): <span set:html={mathLimitR}></span><br/>
+							즉, <span set:html={mathFK}></span>는 <span set:html={mathX1}></span>에서 불연속입니다.</p>
+							<p><b>Step 2. <span set:html={mathFXGX}></span>의 연속 조건</b><br/>
+							곱한 함수가 연속이려면 (좌극한) = (우극한)이어야 하므로:<br/>
+							<span set:html={mathEq}></span><br/>
+							이 식이 성립하려면 오직 <span set:html={mathG1}></span>인 경우뿐입니다.</p>
+							<p><b>Step 3. 상수 <span set:html={mathA}></span> 구하기</b><br/>
+							<span set:html={"$g(1) = 1 - a = 0$"}></span> 이므로<br/>
+							따라서 **<span set:html={mathAns}></span>** 입니다.</p>
+						</div>
+					</details>
+
+					<!-- Difficulty Level Navigation -->
+					<div style="margin-top: 50px; padding: 25px; background: #f9f9f9; border-radius: 16px; border: 1px solid #eee;">
+						<p style="margin: 0 0 15px 0; font-weight: bold; color: #333; font-size: 1rem; display: flex; align-items: center; gap: 8px;">
+							🎯 내 실력에 맞는 문제 도전하기
+						</p>
+						<div style="display: flex; gap: 12px;">
+							<a href="/wiki/chapter01/levels/type03-low/" style="flex: 1; padding: 15px; background: #eef7ee; color: #2e7d32; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #2e7d32; font-size: 1.3rem;">[하]</a>
+							<a href="/wiki/chapter01/levels/type03-mid/" style="flex: 1; padding: 15px; background: #ebf3ff; color: #1565c0; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #1565c0; font-size: 1.3rem;">[중]</a>
+							<a href="/wiki/chapter01/levels/type03-high/" style="flex: 1; padding: 15px; background: #fff8e1; color: #a0522d; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #a0522d; font-size: 1.3rem;">[수능]</a>
+						</div>
+					</div>
+				</div>
+
+				<a href="/wiki/chapter01/problems-cont/" class="back-link" style="margin-top: 40px; display: inline-block;">← 유형별 목록으로 돌아가기</a>
+			</section>
+
+			<div slot="summary">
+				<p>함수의 곱의 연속성 상세 연습입니다. '불연속 $\times$ 연속이 연속이 되려면 연속 함수는 0이어야 한다'는 원리는 시험 점수를 갈라놓는 핵심 포인트입니다.</p>
+			</div>
+		</CornellNote>
+
+		<script is:inline>
+			if (typeof window !== 'undefined') {
+				document.addEventListener("DOMContentLoaded", function() {
+					if (typeof renderMathInElement === 'function') {
+						renderMathInElement(document.body, {
+							delimiters: [
+								{left: '$$', right: '$$', display: true},
+								{left: '$', right: '$', display: false}
+							],
+							throwOnError : false
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

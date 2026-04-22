@@ -1,17 +1,9 @@
 ---
 import CornellNote from '../../../components/CornellNote.astro';
 
-// 모든 수식을 변수로 격리하여 Astro 컴파일러 에러 방지 및 렌더링 최적화
-const mathMain = "$ f(x) = [x] + [-x] $";
-const mathX1 = "$x=1$";
-const mathUX = "$[x]$";
-const mathX = "$x$";
-const mathLimitR = "$ \\lim_{x \\to 1^+} f(x) = 1 + (-2) = -1 $";
-const mathLimitL = "$ \\lim_{x \\to 1^-} f(x) = 0 + (-1) = -1 $";
-
-// 큐 영역 수식
-const mathN = "$n$";
-const mathN1 = "$n-1$";
+// LaTeX constants
+const limInf = "$\\displaystyle \\lim_{x \\to \\infty}$";
+const mathMain = "$\\sqrt{x^2 + 2x} - x$";
 ---
 
 <html lang="ko">
@@ -19,7 +11,7 @@ const mathN1 = "$n-1$";
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<title>유형 02. 절댓값/가우스 함수 - 상세 연습</title>
+		<title>유형 02. 무리식 (무한대) - 상세 연습</title>
 		<!-- KaTeX -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -32,50 +24,54 @@ const mathN1 = "$n-1$";
 				display: flex;
 				justify-content: center;
 			}
-			/* [표준 디자인 시스템] KaTeX & 모바일 수식 최적화 */
-			.formula-box {
-				text-align: center;
-				margin: 30px 0;
-				background: #fff;
-				padding: 30px;
-				border-radius: 12px;
+			/* [표준 디자인 시스템] 난이도 내비게이션 최적화 */
+			.difficulty-container {
+				margin-top: 50px;
+				padding: 25px;
+				background: #f9f9f9;
+				border-radius: 16px;
 				border: 1px solid #eee;
-				box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-				overflow: hidden;
-				width: 100%;
-				box-sizing: border-box;
 			}
-			.math-container {
-				width: 100%;
-				overflow-x: auto;
-				white-space: nowrap;
-				-webkit-overflow-scrolling: touch;
-				padding-bottom: 10px;
+			.difficulty-list {
 				display: flex;
-				justify-content: center;
+				gap: 12px;
 			}
-			.katex-display {
-				margin: 0.5em 0 !important;
-				overflow-x: auto;
-				overflow-y: hidden;
+			.difficulty-btn {
+				flex: 1;
+				padding: 15px;
+				text-align: center;
+				border-radius: 12px;
+				text-decoration: none;
+				font-weight: bold;
+				font-size: 1.3rem;
+				transition: transform 0.2s ease;
 			}
+			.difficulty-btn:active { transform: scale(0.95); }
+			
+			.btn-low { background: #eef7ee; color: #2e7d32; border: 1.5px solid #2e7d32; }
+			.btn-mid { background: #ebf3ff; color: #1565c0; border: 1.5px solid #1565c0; }
+			.btn-high { background: #fff8e1; color: #a0522d; border: 1.5px solid #a0522d; }
+
 			@media screen and (max-width: 480px) {
-				.formula-box { padding: 15px 5px !important; margin: 20px 0 !important; }
-				.katex-display { font-size: 0.85em !important; }
-				.formula-box p { font-size: 1rem !important; line-height: 1.5; }
+				.difficulty-container { padding: 15px !important; }
+				.difficulty-list { gap: 8px !important; }
+				.difficulty-btn { 
+					padding: 12px 5px !important; 
+					font-size: 1.1rem !important; 
+				}
 				body { padding: 10px; }
 			}
 		</style>
 	</head>
 	<body>
-		<CornellNote title="유형 02. 절댓값/가우스 함수" chapter="Chapter 01 Practice">
+		<CornellNote title="유형 02. 무리식" chapter="Chapter 01 Practice">
 			
 			<div slot="cues">
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 집중 공략 포인트</p>
 				<ul style="margin-top: 10px; padding-left: 18px; font-size: 11pt; line-height: 1.6; color: #444;">
-					<li>절댓값 안이 0이 되는 지점 주의</li>
-					<li>가우스 기호는 정수 주변의 우극한(<span set:html={mathN}></span>)과 좌극한(<span set:html={mathN1}></span>) 구분</li>
-					<li>좌극한 = 우극한 = 함숫값 삼박자 확인</li>
+					<li>무리식이 포함된 { "$ \\infty - \\infty $" } 꼴 확인</li>
+					<li>분자를 1로 보고 **유리화** 진행</li>
+					<li>유리화 후 { "$ \\frac{\\infty}{\\infty} $" } 꼴로 변형하여 계수 비교</li>
 				</ul>
 			</div>
 
@@ -84,59 +80,52 @@ const mathN1 = "$n-1$";
 					<h4 style="margin-top: 0; color: #1a1a1a; border-bottom: 2px solid royalblue; display: inline-block; padding-bottom: 5px; margin-bottom: 15px;">
 						[핵심 문제]
 					</h4>
-					<p>함수의 좌극한과 우극한을 각각 구하여 연속성을 판별하시오.</p>
-
-					<!-- 표준화된 formula-box 레이아웃 -->
-					<div class="formula-box">
-						<div class="math-container">
-							<span set:html={"$$ f(x) = [x] + [-x] $$"}></span>
-						</div>
-						<p style="margin-top: 10px; color: #333; word-break: keep-all;">
-							가 <span set:html={mathX1}></span>에서 연속인지 판별하시오.<br/>
-							<small style="color: #666;">(단, <span set:html={mathUX}></span>는 <span set:html={mathX}></span>보다 크지 않은 최대 정수)</small>
-						</p>
+					<p>다음 극한값을 구하시오.</p>
+					<div style="text-align: center; font-size: 1.6rem; margin: 40px 0; background: rgba(0,0,0,0.02); padding: 30px; border-radius: 12px;">
+						<span class="math">{limInf} ({mathMain})</span>
 					</div>
 					
-					<!-- Strategy -->
+					<!-- Progressive Disclosure: Strategy -->
 					<details style="margin-top: 30px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
 						<summary style="font-weight: bold; color: #1a73e8; cursor: pointer; padding: 5px;">💡 해결 전략 (클릭하여 확인)</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.6;">
-							가우스 기호 <span set:html={mathUX}></span>는 <span set:html={mathX}></span>가 정수 <span set:html={mathN}></span>으로 갈 때 **우극한은 <span set:html={mathN}></span>, 좌극한은 <span set:html={mathN1}></span>**이 됩니다. $[ -x ]$의 극한도 동일한 원리로 좌/우를 각각 구해서 더해 보세요.
+							이 문제는 { "$ \\infty - \\infty $" } 꼴입니다. 루트를 벗겨내기 위해 <b>분자의 유리화</b>를 시도해야 합니다. 분모에 { "$ 1 $" }이 있다고 생각하고 켤레식을 분모, 분자에 곱해 보세요.
 						</div>
 					</details>
 
-					<!-- Solution -->
+					<!-- Progressive Disclosure: Step-by-Step Solution -->
 					<details style="margin-top: 15px; border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff;">
-						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이</summary>
+						<summary style="font-weight: bold; color: #e63946; cursor: pointer; padding: 5px;">📝 단계별 풀이 (마지막에 열어보세요!)</summary>
 						<div style="margin-top: 10px; padding: 10px; border-top: 1px dashed #eee; color: #444; line-height: 1.8;">
-							<p><b>Step 1. 우극한 구하기</b><br/>
-							<span set:html={mathLimitR}></span> 입니다.</p>
-							<p><b>Step 2. 좌극한 구하기</b><br/>
-							<span set:html={mathLimitL}></span> 입니다.</p>
-							<p><b>Step 3. 함숫값 확인</b><br/>
-							$f(1) = 1 - 1 = 0$ 입니다.</p>
-							<p><b>결론:</b> 좌/우극한은 모두 $-1$로 같지만, 함숫값($0$)과 다르므로 **불연속**입니다.</p>
+							<p><b>Step 1. 유리화 진행</b><br/>분모와 분자에 { "$ \\sqrt{x^2+2x} + x $" }를 곱합니다.<br/>
+							{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{(\\sqrt{x^2+2x}-x)(\\sqrt{x^2+2x}+x)}{\\sqrt{x^2+2x}+x} = \\lim_{x \\to \\infty} \\frac{(x^2+2x) - x^2}{\\sqrt{x^2+2x}+x} $" }</p>
+							
+							<p><b>Step 2. 식 정리</b><br/>분자를 정리하면 { "$ 2x $" }가 남습니다.<br/>
+							{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{2x}{\\sqrt{x^2+2x}+x} $" }</p>
+							
+							<p><b>Step 3. 최고차항 계수 비교</b><br/>분모의 최고차항은 { "$ \\sqrt{x^2} = x $" }와 { "$ x $" }이므로 합치면 { "$ 2x $" }급입니다.<br/>
+							따라서 { "$ \\text{극한값} = \\frac{2}{1+1} = 1 $" } 입니다.</p>
 						</div>
 					</details>
 
 					<!-- Difficulty Level Navigation -->
-					<div style="margin-top: 50px; padding: 25px; background: #f9f9f9; border-radius: 16px; border: 1px solid #eee;">
+					<div class="difficulty-container">
 						<p style="margin: 0 0 15px 0; font-weight: bold; color: #333; font-size: 1rem; display: flex; align-items: center; gap: 8px;">
 							🎯 내 실력에 맞는 문제 도전하기
 						</p>
-						<div style="display: flex; gap: 12px;">
-							<a href="/wiki/chapter01/levels/type02-low/" style="flex: 1; padding: 15px; background: #eef7ee; color: #2e7d32; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #2e7d32; font-size: 1.3rem;">[하]</a>
-							<a href="/wiki/chapter01/levels/type02-mid/" style="flex: 1; padding: 15px; background: #ebf3ff; color: #1565c0; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #1565c0; font-size: 1.3rem;">[중]</a>
-							<a href="/wiki/chapter01/levels/type02-high/" style="flex: 1; padding: 15px; background: #fff8e1; color: #a0522d; text-align: center; border-radius: 12px; text-decoration: none; font-weight: bold; border: 1.5px solid #a0522d; font-size: 1.3rem;">[수능]</a>
+						<div class="difficulty-list">
+							<a href="/wiki/chapter01/levels/type02-low/" class="difficulty-btn btn-low">[하]</a>
+							<a href="/wiki/chapter01/levels/type02-mid/" class="difficulty-btn btn-mid">[중]</a>
+							<a href="/wiki/chapter01/levels/type02-high/" class="difficulty-btn btn-high">[수능]</a>
 						</div>
 					</div>
 				</div>
 
-				<a href="/wiki/chapter01/problems-cont/" class="back-link" style="margin-top: 40px; display: inline-block;">← 유형별 목록으로 돌아가기</a>
+				<a href="/wiki/chapter01/problems-inf/" class="back-link" style="margin-top: 40px; display: inline-block;">← 유형별 목록으로 돌아가기</a>
 			</section>
 
 			<div slot="summary">
-				<p>절댓값과 가우스 기호가 포함된 함수의 연속성 상세 연습입니다. 극한의 존재 여부와 함숫값이 일치하는지를 꼼꼼히 따지는 훈련이 필요합니다.</p>
+				<p>무리식의 무한대 극한에서는 **'유리화'**가 선택이 아닌 필수입니다. 유리화만 하면 우리가 잘 아는 계수 비교 문제로 바뀐다는 점을 기억하세요!</p>
 			</div>
 		</CornellNote>
 
