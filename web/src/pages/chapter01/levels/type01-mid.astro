@@ -83,14 +83,21 @@ const mathQ3 = "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{\\sqrt{x^2+1}+x}{
 				justify-content: center;
 			}
 
-			@media screen and (max-width: 480px) {
-				.question-card { padding: 25px 15px !important; }
+			@media screen and (max-width: 600px) {
+				.question-card { padding: 20px 15px !important; margin-bottom: 20px; }
 				.formula-box { padding: 15px 5px !important; }
-				.katex-display { font-size: 0.85em !important; }
-				.math-container { justify-content: flex-start; }
-				.sol-container { justify-content: center; margin-top: 25px; }
-				.sol-button { width: 80%; padding: 12px; }
-				body { padding: 10px; }
+				.math-container { justify-content: center !important; overflow-x: auto; }
+				.sol-container { justify-content: center !important; margin-top: 15px; }
+				.sol-button { 
+					width: 100% !important; 
+					display: block !important;
+					padding: 12px; 
+					font-size: 1rem;
+					border-radius: 12px;
+					box-sizing: border-box;
+				}
+				body { padding: 5px; }
+				.type-section { padding: 15px !important; }
 			}
 		</style>
 	</head>

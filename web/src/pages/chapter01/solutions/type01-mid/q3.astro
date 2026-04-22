@@ -14,10 +14,14 @@ import CornellNote from '../../../../components/CornellNote.astro';
 		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 		<style>
 			body { background-color: #e0e0e0; margin: 0; padding: 10px; display: flex; justify-content: center; }
-			.sol-box { background: white; padding: 10px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-			.step-title { display: block; font-weight: bold; color: #1a73e8; margin: 20px 0 10px 0; font-size: 1.1rem; }
-			.back-btn { display: inline-block; padding: 10px 20px; background: #333; color: white; border-radius: 8px; text-decoration: none; margin-top: 20px; transition: background 0.2s; }
-			.back-btn:hover { background: #555; }
+			.sol-box { background: white; padding: 25px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+			.step-title { display: block; font-weight: bold; color: #1a73e8; margin: 25px 0 10px 0; font-size: 1.1rem; border-left: 4px solid #1a73e8; padding-left: 10px; }
+			
+			@media screen and (max-width: 600px) {
+				body { padding: 5px; }
+				.sol-box { padding: 20px 15px; }
+				.mobile-nav-btn { width: 100% !important; display: block !important; box-sizing: border-box; text-align: center; }
+			}
 		</style>
 	</head>
 	<body>
@@ -25,31 +29,31 @@ import CornellNote from '../../../../components/CornellNote.astro';
 			<div slot="cues">
 				<p style="margin: 0; font-weight: bold; color: #1a1a1a;">💡 풀이 전략</p>
 				<p style="margin-top: 10px; font-size: 10pt; line-height: 1.6; color: #666;">
-					분모가 곱의 형태로 되어 있을 때도 최고차항의 차수가 얼마인지, 그 계수가 얼마인지를 먼저 파악하는 것이 중요합니다.
+					분모와 분자에 무한대 꼴의 무리식이 포함된 경우, 분모의 최고차항으로 분자·분모를 나누어 부정형을 해결합니다.
 				</p>
 			</div>
 
 			<section>
-				<div class="sol-box formula-box">
-					<p style="margin-bottom: 20px; font-weight: bold;">Q3. 다음 극한값을 구하시오.</p>
-					<p style="text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 10px; border-radius: 12px;">
-						{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{2x^2 + 5x}{(x-1)(x+3)} $" }
+				<div class="sol-box">
+					<p style="margin-bottom: 20px; font-weight: bold;">Q3. 다음 무리함수가 포함된 극한의 수렴값을 구하시오.</p>
+					<p style="text-align: center; font-size: 1.25rem; background: #f9f9f9; padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+						{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{\\sqrt{x^2+1}+x}{2x-1} $" }
 					</p>
 
-					<span class="step-title">Step 1. 분모 확인</span>
-					<p>분모인 { "$ (x-1)(x+3) $" }을 전개하면 { "$ x^2 + 2x - 3 $" }이 되어 최고차항이 { "$ x^2 $" }임을 알 수 있습니다.</p>
+					<span class="step-title">Step 1. 분모의 최고차항 확인</span>
+					<p>분모의 최고차항은 { "$ x $" } (1차)입니다. 분자의 최고차항도 { "$ \\sqrt{x^2} = x $" } (1차)이므로 차수가 동일함을 알 수 있습니다.</p>
 
-					<span class="step-title">Step 2. 계수 비교</span>
-					<p>분자의 최고차항 { "$ 2x^2 $" }의 계수는 { "$ 2 $" }입니다.<br/>
-					분모의 최고차항 { "$ x^2 $" }의 계수는 { "$ 1 $" }입니다.</p>
+					<span class="step-title">Step 2. 분자·분모를 x로 나누기</span>
+					<p>분자·분모를 { "$ x $" }로 나눕니다. (루트 안은 { "$ x^2 $" }으로 나눕니다.)<br/>
+					{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{\\sqrt{\\frac{x^2}{x^2} + \\frac{1}{x^2}} + \\frac{x}{x}}{\\frac{2x}{x} - \\frac{1}{x}} = \\lim_{x \\to \\infty} \\frac{\\sqrt{1 + \\frac{1}{x^2}} + 1}{2 - \\frac{1}{x}} $" }</p>
 
-					<span class="step-title">Step 3. 극한값 판정</span>
-					<p>따라서 극한값은:<br/>
-					{ "$ \\displaystyle \\frac{2}{1} = 2 $" }<br/>
-					최종 정답은 { "$ 2 $" }입니다.</p>
+					<span class="step-title">Step 3. 극한값 계산</span>
+					<p>{ "$ x \\to \\infty $" }일 때 { "$ \\frac{1}{x}, \\frac{1}{x^2} \\to 0 $" }이므로:<br/>
+					{ "$ \\displaystyle \\frac{\\sqrt{1+0} + 1}{2-0} = \\frac{2}{2} = 1 $" }<br/>
+					따라서 극한값은 { "$ 1 $" }입니다.</p>
 				</div>
 
-				<div style="text-align: center;">
+				<div style="text-align: center; margin-bottom: 30px;">
 					<a href="/wiki/chapter01/levels/type01-mid/" class="problem-link mobile-nav-btn">← 문제로 돌아가기</a>
 				</div>
 			</section>
