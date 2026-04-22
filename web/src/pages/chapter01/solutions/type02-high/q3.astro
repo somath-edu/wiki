@@ -13,11 +13,49 @@ import CornellNote from '../../../../components/CornellNote.astro';
 		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 		<style>
-			body { background-color: #e0e0e0; margin: 0; padding: 10px; display: flex; justify-content: center; }
-			.sol-box { background: white; padding: 10px; border-radius: 20px; border: 1.5px solid #eee; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-			.step-title { display: block; font-weight: bold; color: #a0522d; margin: 20px 0 10px 0; font-size: 1.1rem; }
-			.back-btn { display: inline-block; padding: 10px 20px; background: #333; color: white; border-radius: 8px; text-decoration: none; margin-top: 20px; transition: background 0.2s; }
-			.back-btn:hover { background: #555; }
+			body { background-color: #e0e0e0; margin: 0; padding: 20px; display: flex; justify-content: center; }
+			.sol-box { 
+				background: white; 
+				padding: 30px; 
+				border-radius: 20px; 
+				border: 1px solid #eee; 
+				margin-bottom: 25px; 
+				box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+			}
+			.step-title { display: block; font-weight: bold; color: #a0522d; margin: 25px 0 10px 0; font-size: 1.15rem; border-left: 4px solid #a0522d; padding-left: 10px; }
+			
+			.formula-box {
+				text-align: center;
+				margin: 20px 0;
+				background: #fcfcfc;
+				padding: 20px;
+				border-radius: 12px;
+				border: 1px solid #f0f0f0;
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+			}
+
+			.mobile-nav-btn {
+				display: block;
+				width: 100%;
+				padding: 15px;
+				background: #333;
+				color: white;
+				border-radius: 12px;
+				text-decoration: none;
+				margin-top: 20px;
+				font-weight: bold;
+				text-align: center;
+				transition: background 0.2s;
+			}
+			.mobile-nav-btn:hover { background: #555; }
+
+			@media screen and (max-width: 600px) {
+				body { padding: 10px; }
+				.sol-box { padding: 20px 15px !important; }
+				.formula-box { padding: 15px 5px !important; font-size: 0.95rem; }
+				.step-title { font-size: 1.05rem !important; }
+			}
 		</style>
 	</head>
 	<body>
@@ -30,11 +68,11 @@ import CornellNote from '../../../../components/CornellNote.astro';
 			</div>
 
 			<section>
-				<div class="sol-box formula-box">
-					<p style="margin-bottom: 20px; font-weight: bold;">Q3. 다음 등식을 만족시키는 상수 { "$ a $" }의 값을 구하시오.</p>
-					<p style="text-align: center; font-size: 1.25rem; background: #fcfcfc; padding: 10px; border-radius: 12px; border: 1px solid #f0f0f0;">
+				<div class="sol-box">
+					<p style="margin-bottom: 20px; font-weight: bold;">Q3. 다음 등식을 만족시키는 상수 $a$의 값을 구하시오.</p>
+					<div class="formula-box">
 						{ "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{\\sqrt{x^2 + ax + 3} - x}{\\sqrt{x^2 + 2x} - x} = 2 $" }
-					</p>
+					</div>
 
 					<span class="step-title">Step 1. 분자/분모 각각 유리화 팁</span>
 					<p>분자의 극한은 { "$ \\displaystyle \\lim_{x \\to \\infty} \\frac{ax+3}{\\sqrt{x^2+ax+3}+x} $" }로 정리되므로 극한값은 { "$ \\frac{a}{2} $" }입니다.<br/>
@@ -44,13 +82,13 @@ import CornellNote from '../../../../components/CornellNote.astro';
 					<p>따라서 전체 식의 극한값 { "$ L $" }은:<br/>
 					{ "$ \\displaystyle L = \\frac{a/2}{1} = \\frac{a}{2} $" }</p>
 
-					<span class="step-title">Step 3. 상수 { "$ a $" } 도출</span>
+					<span class="step-title">Step 3. 상수 $a$ 도출</span>
 					<p>{ "$ \\displaystyle \\frac{a}{2} = 2 \\implies a = 4 $" }<br/>
 					따라서 정답은 { "$ a = 4 $" }입니다.</p>
 				</div>
 
 				<div style="text-align: center;">
-					<a href="/wiki/chapter01/levels/type02-high/" class="problem-link mobile-nav-btn">← 문제로 돌아가기</a>
+					<a href="/wiki/chapter01/levels/type02-high/" class="mobile-nav-btn">← 문제로 돌아가기</a>
 				</div>
 			</section>
 		</CornellNote>
